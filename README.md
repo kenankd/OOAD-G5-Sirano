@@ -1,6 +1,4 @@
-# OOAD-G5-Sirano
-
-<h1 align="center">Online clothing store "Sirano"</h1>
+<h1 align="center">Online clothing boutique "Sirano"</h1>
 <h3 align="center">Sirano - Your Personal Fashion Stylist!</h3>
 
 Welcome to Sirano – the ultimate destination for fashion lovers! Our app offers the latest trends in clothing, 
@@ -33,18 +31,18 @@ At Sirano, we believe that shopping for clothes should be easy and enjoyable, wh
 
 Meet the team behind Sirano! With our combined expertise in C# and passion for creating innovative solutions, we have worked tirelessly to bring you a fast, responsive, and user-friendly shopping experience. <br /> <br />
 Our talented and dedicated group of developers includes : <br /> 
-* Kenan Dizdarević <br />
-* Ali Boudellaa <br />
-* Ilhan Hasičić <br />
-* Nejra Adilović <br />
-* Dalila Kršlak <br />
+* [Kenan Dizdarević](https://github.com/kenankd) <br />
+* [Ali Boudellaa](https://github.com/boudellaa) <br />
+* [Ilhan Hasičić](https://github.com/ihasicic1) <br />
+* [Nejra Adilović](https://github.com/nejradilovic) <br />
+* [Dalila Kršlak](https://github.com/dalilakrslak) <br />
 
 <h3 align="left">Contact</h3>
 
 If you have any questions or feedback about the Sirano app, please contact us. We're always happy to hear from our customers and we'll do everything we can to ensure your shopping experience is a pleasant one. Happy shopping!
 
 📫 How to reach us : <br /> 
-  * **kdizdarevic1@etf.unsa.ba**
+  * **kdizdarevi1@etf.unsa.ba**
   * **aboudellaa1@etf.unsa.ba**
   * **ihasicic1@etf.unsa.ba**
   * **nadilovic2@etf.unsa.ba**
