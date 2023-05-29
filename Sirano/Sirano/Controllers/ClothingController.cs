@@ -10,11 +10,11 @@ using Sirano.Models;
 
 namespace Sirano.Controllers
 {
-    public class ClothingsController : Controller
+    public class ClothingController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ClothingsController(ApplicationDbContext context)
+        public ClothingController(ApplicationDbContext context)
         {
             _context = context;
         }
