@@ -1,0 +1,80 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Sign in";
+}
+
+<style>
+    .container {
+        display: flex;
+    }
+
+    .div4 {
+        flex-grow: 1;
+    }
+</style>
+
+<div style="margin-top: 50px; margin-bottom: 30px; margin-left:65px">
+    <h style="font-family: Playfair Display; font-weight:600; font-size: 45px">Sign in or create your account</h>
+</div>
+<div class="container">
+    <div class="div4" style="margin-right: 200px;">
+        <p style="font-family: Poppins; font-size: 20px; margin-left:50px; margin-bottom:20px"><i>Have an account? Sign in</i></p>
+        <section>
+            <form id="account" method="post" style="border:black; border-width:2px; border-style:solid">
+                <p style="font-family: Poppins; color:rgba(20,20,20,0.6); font-size: 18px; margin-left:52px; margin-right:170px; margin-top:25px; white-space: nowrap;">Enter your log in information</p>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group" style="margin-top: 20px; margin-bottom: 25px; margin-left:50px; margin-right:50px">
+                    <input asp-for="Input.Email" class="form-control" placeholder="Email"/>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin-bottom: 40px; margin-left:50px; margin-right:50px">
+                    <input asp-for="Input.Password" class="form-control" placeholder="Password"/>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 40px; margin-left:30px; margin-top:50px">
+                    <button type="submit" class="button1">SIGN IN</button>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div>
+        <section>
+            <p style="font-family: Poppins; font-size: 20px; margin-left:30px"><i>Don't have an account? Register now</i></p>
+            <div class="container" style="margin-left: 20px">
+                <div style="margin-right: 15px; margin-top:15px; margin-bottom: 35px;">
+                    <img src="/images/delivery.png" width="40" height="40">
+                </div>
+                <div style="margin-top: 27px;">
+                    <p style="font-family: Poppins; color:rgba(20,20,20,0.6); font-size: 17px">Track your orders</p>
+                </div>
+            </div>
+
+            <div class="container" style="margin-left: 20px">
+                <div style="margin-right:20px; margin-bottom:35px;">
+                    <img src="/images/home.png" width="35" height="35">
+                </div>
+                <div style="margin-top: 7px;">
+                    <p style="font-family: Poppins; color:rgba(20,20,20,0.6); font-size: 17px">Save your shipping details</p>
+                </div>
+            </div>
+            <div class="container" style="margin-left: 20px">
+                <div style="margin-right:20px; margin-bottom:75px;">
+                    <img src="/images/return.png" width="35" height="35">
+                </div>
+                <div style="margin-top: 7px;">
+                    <p style="font-family: Poppins; color:rgba(20,20,20,0.6); font-size: 17px">Make returns online</p>
+                </div>
+            </div>
+
+            <form action="Register">
+                <button type="submit" class="button1" style="margin-left:30px">SIGN UP</button>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

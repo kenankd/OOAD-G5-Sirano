@@ -69,3 +69,53 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.button1 {
+    background-color: #606060;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 7px 150px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.button2 {
+    background-color: rgba(3,3,3,0.57);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    margin: 2px 2px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-grow: 1;
+}
+
+.button3 {
+    background-color: rgba(3,3,3,0);
+    border: none;
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-align: center;
+    font-weight: normal;
+    text-decoration: none;
+    font-family: IBM Plex Sans;
+    display: inline-block;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-grow: 1;
+}
+
