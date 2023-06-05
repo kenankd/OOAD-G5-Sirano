@@ -30,6 +30,7 @@ namespace Sirano.Data
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<Review>().ToTable("Review");
             modelBuilder.Entity<Store>().ToTable("Store");
+            modelBuilder.Entity<Cart>().ToTable("Cart");
             base.OnModelCreating(modelBuilder);
         }
     }

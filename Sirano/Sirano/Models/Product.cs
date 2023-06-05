@@ -18,6 +18,8 @@ namespace Sirano.Models
         public string name { get; set; }
         public Boolean men { get; set; }
 
+        public string summary { get; set; }
+
         public Product(){}
 }
 }

@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;  // It's important to disable the layout for partial views
+}
+
+<style>
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .header-controls {
+        display: flex;
+        align-items: center;
+    }
+
+    .header h1 {
+        font-family: 'Playfair Display';
+        font-weight: 100;
+        font-size: 65px;
+        color: rgba(3,3,3,0.59);
+    }
+
+    .header-controls button,
+    .header-controls a {
+        margin-left: 20px;
+    }
+</style>
+
+<div class="header">
+    <h1>SIRANO</h1>
+    <div class="header-controls">
+        <button type="submit" class="button3" style="color:black;">LOG IN</button>
+        <a href="/cart">
+            <img src="@Url.Content("~/images/korpa.png")" alt="Cart" style="width: 30px; height: 30px;">
+        </a>
+    </div>
+</div>

@@ -1,15 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Sirano";
 }
+
 <style>
     .container {
         display: flex;
     }
 </style>
 
-<div>
-    <h style="font-family: Playfair Display; font-weight:100; font-size: 65px; color:rgba(3,3,3,0.59)">SIRANO</h>
-</div>
+<partial name="_Header" />
 
 <div class="container">
     <div class="clickable-div" onclick="location.href='@Url.Action("Index", "Product",new { isMen = false })'" style="margin-left:100px; margin-right:100px; margin-top:80px">

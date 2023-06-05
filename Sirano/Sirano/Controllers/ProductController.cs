@@ -35,7 +35,6 @@ namespace Sirano.Controllers
             {
                 return NotFound();
             }
-
             var product = await _context.Product
                 .Include(p => p.review)
                 .FirstOrDefaultAsync(m => m.id == id);
