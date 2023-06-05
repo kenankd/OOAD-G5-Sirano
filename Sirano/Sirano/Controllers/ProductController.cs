@@ -20,12 +20,24 @@ namespace Sirano.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index(bool isMen)
+        public async Task<IActionResult> Index(bool isMen, string productType)
         {
             var products = _context.Product.Include(p => p.review);
             var filteredProducts = products.Where(p => p.men == isMen);
+
+            if (!string.IsNullOrEmpty(productType))
+            {
+                switch (productType.ToLower())
+                {
+                    case "footwear":
+                        filteredProducts = filteredProducts.Where(p => p is Footwear && p.men == isMen);
+                        break;
+                    case "clothing":
+                        filteredProducts = filteredProducts.Where(p => p is Clothing && p.men == isMen);
+                        break;
+                }
+            }
             return View(await filteredProducts.ToListAsync());
-            
         }
 
         // GET: Products/Details/5

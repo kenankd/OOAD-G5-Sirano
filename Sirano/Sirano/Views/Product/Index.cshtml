@@ -40,7 +40,13 @@
 </style>
 
 
-
+<form method="get" action="/Product/Index">
+    <select name="productType" onchange="this.form.submit()">
+        <option value="all">All</option>
+        <option value="footwear">Footwear</option>
+        <option value="clothing">Clothing</option>
+    </select>
+</form>
 
 
 <div class="container">
