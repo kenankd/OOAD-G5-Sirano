@@ -4,50 +4,85 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left; /* center items horizontally */
+        align-items: center; /* center items vertically */
+        max-width: 1150px;
+        min-height: 340px;
+        /* 200px (width of image) * 5 + 10px (gap between images) * 4 = 1050px */
+         /* center the container */
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.discount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.review)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.colour)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.review.id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.colour)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    .header {
+        
+        padding: 20px;
+        position: relative;
+    }
+
+        .header h1 {
+            font-family: 'Playfair Display';
+            font-weight: 100;
+            font-size: 75px;
+            color: rgba(3,3,3,0.59);
+        }
+
+    .header-controls {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+        .header-controls button,
+        .header-controls a {
+            margin-left: 20px;
+        }
+
+    .product-card {
+        width: 210px; /* make images bigger */
+        height: 310px; /* make images bigger */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+        margin: 20px; /* add some space between images */
+    }
+
+    .product-image {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    
+</style>
+
+
+
+
+<div class="header">
+    <h1>SIRANO</h1>
+    <div class="header-controls">
+        <button type="submit" class="button3" style="color:black;">LOG IN</button>
+        <a href="/cart">
+            <img src="@Url.Content("~/images/korpa.png")" alt="Cart" style="width: 30px; height: 30px;">
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    @{
+        int counter = 0;
+    }
+    @foreach (var product in Model)
+    {
+        if (counter < 10) // Only show the first 10 products
+        {
+            <div class="product-card">
+                <img src="@Url.Content(product.image)" alt="@product.name" class="product-image">
+            </div>
+            counter++;
+        }
+    }
+</div>

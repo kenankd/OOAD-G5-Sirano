@@ -269,6 +269,15 @@ namespace Sirano.Data.Migrations
                     b.Property<double>("discount")
                         .HasColumnType("float");
 
+                    b.Property<string>("image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("men")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("price")
                         .HasColumnType("nvarchar(max)");
 

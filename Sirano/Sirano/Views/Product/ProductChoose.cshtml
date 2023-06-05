@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "ProductChoose";
+}
+
+<style>
+    .container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+
+    .product-card {
+        flex: 0 0 auto;
+        scroll-snap-align: center;
+        margin: 0 10px;
+    }
+
+    .product-image {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .navigation-arrow {
+        font-size: 24px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container">
+    @foreach (var product in Model.Products)
+    {
+        <div class="product-card">
+            <img src="@product.Image" alt="@product.name" class="product-image">
+        </div>
+    }
+</div>
+
+<div class="navigation">
+    <span class="navigation-arrow" onclick="scrollProducts(-1)">&lt;</span>
+    <span class="navigation-arrow" onclick="scrollProducts(1)">&gt;</span>
+</div>
+
+<script>
+    function scrollProducts(direction) {
+        const container = document.querySelector('.container');
+        const scrollAmount = container.offsetWidth * direction;
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+</script>
+

@@ -20,10 +20,12 @@ namespace Sirano.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(bool isMen)
         {
-            var applicationDbContext = _context.Product.Include(p => p.review);
-            return View(await applicationDbContext.ToListAsync());
+            var products = _context.Product.Include(p => p.review);
+            var filteredProducts = products.Where(p => p.men == isMen);
+            return View(await filteredProducts.ToListAsync());
+            
         }
 
         // GET: Products/Details/5
@@ -156,5 +158,6 @@ namespace Sirano.Controllers
         {
             return _context.Product.Any(e => e.id == id);
         }
+        
     }
 }
