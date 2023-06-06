@@ -398,3 +398,5 @@ C:\Users\PC\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Siran
 C:\Users\PC\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\ref\Sirano.dll
 C:\Users\PC\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Product\ProductChoose.cshtml.g.cs
 C:\Users\PC\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Shared\_Header.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Product\ProductChoose.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Shared\_Header.cshtml.g.cs

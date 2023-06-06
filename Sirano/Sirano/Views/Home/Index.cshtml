@@ -9,15 +9,27 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+    .container {
+        display: flex;
+    }
 </style>
 
 <body>
-    <form action="/Identity/Account/Login">
-        <button type="submit" class="button3" style="margin-left:1200px; color:white; margin-top:15px">LOG IN</button>
-    </form>
-    <div style="margin-top:540px; margin-left:140px">
+    <div class="container">
+        <div>
+            <form action="/Review/Create">
+                <button type="submit" class="button3" style="margin-left:1050px; color:white; margin-top:15px">WHERE TO FIND US</button>
+            </form>
+        </div>
+        <div>
+            <form action="/Identity/Account/Login">
+                <button type="submit" class="button3" style="margin-left:10px; color:white; margin-top:15px">LOG IN</button>
+            </form>
+        </div>
+    </div>
+    <div>
         <form action="Home/Privacy">
-            <button type="submit" class="button2">SHOP NOW</button>
+            <button type="submit" class="button2" style="margin-top:450px; margin-left:140px">SHOP NOW</button>
         </form>
     </div>
 </body>

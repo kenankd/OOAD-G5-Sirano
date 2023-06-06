@@ -26,14 +26,33 @@
     .header-controls a {
         margin-left: 20px;
     }
+
+    .dugmic {
+        background-color: rgba(3,3,3,0);
+        border: none;
+        border-radius: 65px;
+        padding: 0px 0px;
+        text-align: center;
+        font-weight: 100;
+        color: rgba(3,3,3,0.59);
+        font-family: Playfair Display;
+        display: inline-block;
+        font-size: 65px;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-grow: 1;
+    }
 </style>
 
+
 <div class="header">
-    <h1>SIRANO</h1>
-    <div class="header-controls">
-        <button type="submit" class="button3" style="color:black;">LOG IN</button>
-        <a href="/cart">
-            <img src="@Url.Content("~/images/korpa.png")" alt="Cart" style="width: 30px; height: 30px;">
-        </a>
-    </div>
+    <form action="/Home">
+        <button type="submit" class="dugmic">SIRANO</button>
+    </form>
+    <form action="/Identity/Account/Login">
+        <button type="submit" class="button3" style="margin-left:780px; margin-top:15px">LOG IN</button>
+    </form>
+    <a href="/Identity/Account/Register">
+        <img src="@Url.Content("~/images/korpa.png")" width="20" height="20" style="margin-top: 15px; margin-left:5px">
+    </a>
 </div>
