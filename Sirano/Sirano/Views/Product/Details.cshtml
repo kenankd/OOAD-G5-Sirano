@@ -35,31 +35,93 @@
         white-space: nowrap;
     }
 
+    .button5:hover {
+            background-color: #e5cfba;
+    }
+
     .verticalLine {
-        height: 450px;
-        border-right: 1px solid rgba(20,20,20,0.3);
+        height: 550px;
+        border-right: 1px solid rgba(20,20,20,0.2);
         margin-left:35px;
     }
 
     .horizontalLine {
         width: 370px;
-        border-top: 1px solid rgba(20,20,20,0.3);
-        margin-top: 25px;
+        border-top: 1px solid rgba(20,20,20,0.2);
+        margin-top: 20px;
+    }
+
+    .dropbtn {
+        background-color: rgba(20,20,20,0.1);
+        color: rgba(20,20,20,0.5);
+        padding: 7px;
+        font-family: IBM Plex Sans;
+        font-size: 15px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        font-family: IBM Plex Sans;
+        font-size: 15px;
+        color: rgba(20,20,20,0.5);
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropdown:hover .dropbtn {
+        background-color: #e5cfba;
     }
 </style>
 <partial name="_Header" />
-<div class="container">
+<div class="container" style="margin-top:25px">
     <div class="div4">
-        <img src="@Url.Content(Model.image)" alt="@Model.name" style="width:300px; height: 450px; margin-left:110px">
+        <img src="@Url.Content(Model.image)" alt="@Model.name" style="width:400px; height: 550px; margin-left:90px">
     </div>
     <div class="verticalLine"></div>
-    <div style="margin-left:70px; max-width:450px">
-        <p style="font-family: IBM Plex Sans; font-size: 25px; text-transform: uppercase; font-weight:100; margin-top: 50px; margin-bottom:20px">@Model.name</p>
-        <p style="font-family: PoppIBM Plex Sansins; color:rgba(20,20,20,0.6); font-size: 15px; margin-right:50px">@Model.summary</p>
-        <p style="font-family: IBM Plex Sans; font-size: 23px; font-weight:100; margin-top:45px">@Model.price$</p>
-        <div class="horizontalLine"></div>
+    <div style=" max-width:472px">
+        <p style="margin-left:70px; font-family: IBM Plex Sans; font-size: 28px; text-transform: uppercase; font-weight:100; margin-top: 80px; margin-bottom:25px">@Model.name</p>
+        <p style="margin-left:70px; font-family: PoppIBM Plex Sansins; color:rgba(20,20,20,0.6); font-size: 15px">@Model.summary</p>
+        <div class="container">
+            <div>
+                <p style="margin-left:57px; font-family: IBM Plex Sans; font-size: 25px; font-weight:100; margin-top:45px; margin-right:23px; color: rgba(20,20,20,0.7);">$@Model.price</p>
+            </div>
+            <div>
+                <p style="margin-left:83px; font-family: IBM Plex Sans; font-size: 17px; font-weight:100; margin-top:53px; margin-left:180px; color:rgba(20,20,20,0.6);">Size</p>
+            </div>
+            <div class="dropdown" style="margin-top:48px; margin-left:10px">
+                <select class="dropbtn" name="SIZE"> 
+                    <option value="XS" selected>XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            </div>
+        </div>
+        <div class="horizontalLine" style="margin-left:70px;"></div>
         <form action="/Product/Create">
-            <button type="submit" class="button5" style="margin-top:20px">ADD TO CART</button>
+            <button type="submit" class="button5" style=" margin-left:70px; margin-top:20px">ADD TO CART</button>
         </form>
     </div>
 </div>
