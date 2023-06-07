@@ -29,10 +29,17 @@
     <form action="/Home">
         <button type="submit" class="dugmic">SIRANO</button>
     </form>
-    <form action="/Identity/Account/Login">
-        <button type="submit" class="button3" style="margin-left:780px; margin-top:15px">LOG IN</button>
-    </form>
-    <a href="/Identity/Account/Register">
-        <img src="@Url.Content("~/images/korpa.png")" width="20" height="20" style="margin-top:15px; margin-left:5px">
-    </a>
+    <div style="margin-left:800px;"></div>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <form action="/Identity/Account/Login">
+            <button type="submit" class="button3" style="margin-top:15px">LOG IN</button>
+        </form>
+     }
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a href="/Identity/Account/Register">
+            <img src="@Url.Content("~/images/korpa.png")" width="20" height="20" style="margin-top:15px;">
+        </a>
+    }
 </div>
