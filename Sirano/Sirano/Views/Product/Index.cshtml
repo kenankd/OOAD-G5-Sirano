@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Sirano.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Products";
 }
 <partial name="_Header" />
 
@@ -22,12 +22,11 @@
     
 
     .product-card {
-        width: 210px; /* make images bigger */
-        height: 310px; /* make images bigger */
+        width: 170px; /* make images bigger */
+        height: 270px; /* make images bigger */
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #f0f0f0;
         margin: 20px; /* add some space between images */
     }
 
@@ -40,11 +39,11 @@
 </style>
 
 
-<form method="get" action="/Product/Index">
+<form method="get" action="/Product/Index" style="margin-left:85px; font-family:Playfair Display; font-size:15px; font-weight:100">
     <select name="productType" onchange="this.form.submit()">
-        <option value="all">All</option>
-        <option value="footwear">Footwear</option>
-        <option value="clothing">Clothing</option>
+        <option value="all">ALL</option>
+        <option value="footwear">FOOTWEAR</option>
+        <option value="clothing">CLOTHING</option>
     </select>
 </form>
 
@@ -61,7 +60,7 @@
 
             <a href="@actionLink">
                 <div class="product-card">
-                    <img src="@Url.Content(product.image)" alt="@product.name" class="product-image">
+                    <img src="@Url.Content(product.image)" alt="@product.name" class="product-image" style="margin-left:100px">
                 </div>
             </a>
             counter++;
