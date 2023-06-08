@@ -14,4 +14,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Clothing\" />
+    <Folder Include="Views\Footwear\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\RegisteredUser\" />
+  </ItemGroup>
+
 </Project>

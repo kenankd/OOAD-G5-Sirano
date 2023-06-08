@@ -8,15 +8,14 @@ namespace Sirano.Models
     {
         [Key]
         public int id { get; set; }
-        public double discount { get; set; }
-        [ForeignKey("Review")]
-        public int reviewID { get; set; }
-        public Review review { get; set; }
         public string price { get; set; }
         public string colour { get; set; }
         public string image { get; set; }
         public string name { get; set; }
         public Boolean men { get; set; }
+        [ForeignKey("Cart")]
+        public int CartId { get; set; }
+        public Cart? Cart { get; set; }
 
         public string summary { get; set; }
 

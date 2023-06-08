@@ -10,23 +10,23 @@ using Sirano.Models;
 
 namespace Sirano.Controllers
 {
-    public class ClothingController : Controller
+    public class CartController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ClothingController(ApplicationDbContext context)
+        public CartController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Clothings
+        // GET: Cart
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Clothing;
+            var applicationDbContext = _context.Cart_1.Include(c => c.RegisteredUser);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Clothings/Details/5
+        // GET: Cart/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,40 +34,42 @@ namespace Sirano.Controllers
                 return NotFound();
             }
 
-            var clothing = await _context.Clothing
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (clothing == null)
+            var cart = await _context.Cart_1
+                .Include(c => c.RegisteredUser)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cart == null)
             {
                 return NotFound();
             }
 
-            return View(clothing);
+            return View(cart);
         }
 
-        // GET: Clothings/Create
+        // GET: Cart/Create
         public IActionResult Create()
         {
-            ViewData["reviewID"] = new SelectList(_context.Review, "id", "id");
+            ViewData["UserID"] = new SelectList(_context.RegisteredUser, "Id", "Id");
             return View();
         }
 
-        // POST: Clothings/Create
+        // POST: Cart/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,size,category,discount,reviewID,price,colour")] Clothing clothing)
+        public async Task<IActionResult> Create([Bind("Id,UserID,Size")] Cart cart)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(clothing);
+                _context.Add(cart);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(clothing);
+            ViewData["UserID"] = new SelectList(_context.RegisteredUser, "Id", "Id", cart.UserID);
+            return View(cart);
         }
 
-        // GET: Clothings/Edit/5
+        // GET: Cart/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +77,23 @@ namespace Sirano.Controllers
                 return NotFound();
             }
 
-            var clothing = await _context.Clothing.FindAsync(id);
-            if (clothing == null)
+            var cart = await _context.Cart_1.FindAsync(id);
+            if (cart == null)
             {
                 return NotFound();
             }
-            return View(clothing);
+            ViewData["UserID"] = new SelectList(_context.RegisteredUser, "Id", "Id", cart.UserID);
+            return View(cart);
         }
 
-        // POST: Clothings/Edit/5
+        // POST: Cart/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,size,category,discount,reviewID,price,colour")] Clothing clothing)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UserID,Size")] Cart cart)
         {
-            if (id != clothing.id)
+            if (id != cart.Id)
             {
                 return NotFound();
             }
@@ -99,12 +102,12 @@ namespace Sirano.Controllers
             {
                 try
                 {
-                    _context.Update(clothing);
+                    _context.Update(cart);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClothingExists(clothing.id))
+                    if (!CartExists(cart.Id))
                     {
                         return NotFound();
                     }
@@ -115,10 +118,11 @@ namespace Sirano.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(clothing);
+            ViewData["UserID"] = new SelectList(_context.RegisteredUser, "Id", "Id", cart.UserID);
+            return View(cart);
         }
 
-        // GET: Clothings/Delete/5
+        // GET: Cart/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +130,31 @@ namespace Sirano.Controllers
                 return NotFound();
             }
 
-            var clothing = await _context.Clothing
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (clothing == null)
+            var cart = await _context.Cart_1
+                .Include(c => c.RegisteredUser)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cart == null)
             {
                 return NotFound();
             }
 
-            return View(clothing);
+            return View(cart);
         }
 
-        // POST: Clothings/Delete/5
+        // POST: Cart/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var clothing = await _context.Clothing.FindAsync(id);
-            _context.Clothing.Remove(clothing);
+            var cart = await _context.Cart_1.FindAsync(id);
+            _context.Cart_1.Remove(cart);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClothingExists(int id)
+        private bool CartExists(int id)
         {
-            return _context.Clothing.Any(e => e.id == id);
+            return _context.Cart_1.Any(e => e.Id == id);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Sirano.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Order.Include(o => o.products).Include(o => o.user);
+            var applicationDbContext = _context.Order.Include(o => o.cart);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,8 +35,7 @@ namespace Sirano.Controllers
             }
 
             var order = await _context.Order
-                .Include(o => o.products)
-                .Include(o => o.user)
+                .Include(o => o.cart)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (order == null)
             {
@@ -49,8 +48,7 @@ namespace Sirano.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["productID"] = new SelectList(_context.Product, "id", "id");
-            ViewData["userID"] = new SelectList(_context.User, "id", "id");
+            ViewData["carttID"] = new SelectList(_context.Cart, "id", "id");
             return View();
         }
 
@@ -67,8 +65,7 @@ namespace Sirano.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["productID"] = new SelectList(_context.Product, "id", "id", order.productID);
-            ViewData["userID"] = new SelectList(_context.User, "id", "id", order.userID);
+            ViewData["cartID"] = new SelectList(items: _context.Cart, "id", "id", order.CartID);
             return View(order);
         }
 
@@ -85,8 +82,7 @@ namespace Sirano.Controllers
             {
                 return NotFound();
             }
-            ViewData["productID"] = new SelectList(_context.Product, "id", "id", order.productID);
-            ViewData["userID"] = new SelectList(_context.User, "id", "id", order.userID);
+            ViewData["cartID"] = new SelectList(items: _context.Cart, "id", "id", order.CartID);
             return View(order);
         }
 
@@ -122,8 +118,7 @@ namespace Sirano.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["productID"] = new SelectList(_context.Product, "id", "id", order.productID);
-            ViewData["userID"] = new SelectList(_context.User, "id", "id", order.userID);
+            ViewData["cartID"] = new SelectList(items: _context.Cart, "id", "id", order.CartID);
             return View(order);
         }
 
@@ -136,8 +131,7 @@ namespace Sirano.Controllers
             }
 
             var order = await _context.Order
-                .Include(o => o.products)
-                .Include(o => o.user)
+                .Include(o => o.cart)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (order == null)
             {

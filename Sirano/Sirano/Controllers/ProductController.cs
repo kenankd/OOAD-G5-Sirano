@@ -22,7 +22,7 @@ namespace Sirano.Controllers
         // GET: Products
         public async Task<IActionResult> Index(bool isMen, string productType)
         {
-            var products = _context.Product.Include(p => p.review);
+            var products = _context.Product;
             var filteredProducts = products.Where(p => p.men == isMen);
 
             if (!string.IsNullOrEmpty(productType))
@@ -48,7 +48,6 @@ namespace Sirano.Controllers
                 return NotFound();
             }
             var product = await _context.Product
-                .Include(p => p.review)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (product == null)
             {
@@ -78,7 +77,6 @@ namespace Sirano.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["reviewID"] = new SelectList(_context.Review, "id", "id", product.reviewID);
             return View(product);
         }
 
@@ -95,7 +93,6 @@ namespace Sirano.Controllers
             {
                 return NotFound();
             }
-            ViewData["reviewID"] = new SelectList(_context.Review, "id", "id", product.reviewID);
             return View(product);
         }
 
@@ -131,7 +128,6 @@ namespace Sirano.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["reviewID"] = new SelectList(_context.Review, "id", "id", product.reviewID);
             return View(product);
         }
 
@@ -144,7 +140,6 @@ namespace Sirano.Controllers
             }
 
             var product = await _context.Product
-                .Include(p => p.review)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (product == null)
             {

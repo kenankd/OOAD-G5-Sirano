@@ -22,7 +22,7 @@ namespace Sirano.Controllers
         // GET: Footwears
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Footwear.Include(f => f.review);
+            var applicationDbContext = _context.Footwear;
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,7 +35,6 @@ namespace Sirano.Controllers
             }
 
             var footwear = await _context.Footwear
-                .Include(f => f.review)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (footwear == null)
             {
@@ -65,7 +64,6 @@ namespace Sirano.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["reviewID"] = new SelectList(_context.Review, "id", "id", footwear.reviewID);
             return View(footwear);
         }
 
@@ -82,7 +80,6 @@ namespace Sirano.Controllers
             {
                 return NotFound();
             }
-            ViewData["reviewID"] = new SelectList(_context.Review, "id", "id", footwear.reviewID);
             return View(footwear);
         }
 
@@ -118,7 +115,6 @@ namespace Sirano.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["reviewID"] = new SelectList(_context.Review, "id", "id", footwear.reviewID);
             return View(footwear);
         }
 
@@ -131,7 +127,6 @@ namespace Sirano.Controllers
             }
 
             var footwear = await _context.Footwear
-                .Include(f => f.review)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (footwear == null)
             {
