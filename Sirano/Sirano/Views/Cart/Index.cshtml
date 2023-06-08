@@ -1,41 +1,118 @@
-﻿@model IEnumerable<Sirano.Models.Cart>
+﻿<!DOCTYPE html>
+<partial name="_Header" />
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-@{
-    ViewData["Title"] = "Index";
-}
+        .product-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-<h1>Index</h1>
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+        }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RegisteredUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegisteredUser.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            .product-card img {
+                margin-bottom: 10px;
+            }
+
+        .product-info {
+            text-align: center;
+        }
+
+            .product-info p {
+                margin: 5px;
+            }
+
+        .total-price {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button5 {
+            background-color: WHITE;
+            border-color: black;
+            border-radius: 1px;
+            color: BLACK;
+            padding: 7px 70px;
+            text-align: center;
+            font-weight: 100;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px 2px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .container img {
+                margin: 20px;
+            }
+
+        .natpis {
+            display: flex;
+        }
+
+        .product-image {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="product-container">
+            <div class="product-card">
+                <img src="/images/haljina5.jpg" alt="Proizvod 1" class="product-image">
+                <div class="product-info">
+                    <p>Haljina</p>
+                    <p>Cijena: $49.99</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="/images/duks4.jpg" alt="Proizvod 2" class="product-image">
+                <div class="product-info">
+                    <p>Duks</p>
+                    <p>Cijena: $29.99</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="~/images/majica.png" alt="Proizvod 3" class="product-image">
+                <div class="product-info">
+                    <p>Majica</p>
+                    <p>Cijena: $19.99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="natpis" style="margin-top:50px">
+        <div>
+            <p style="font-family: IBM Plex Sans; font-size: 17px; font-weight: 100; margin-top:8px; margin-left: 570px; color: rgba(20, 20, 20, 0.7);">TOTAL: $175.97</p>
+        </div>
+        <div>
+            <form action="/Product/Create">
+                <button type="submit" class="button5" style="margin-left: 15px; margin-bottom: 50px;">CONTINUE</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
