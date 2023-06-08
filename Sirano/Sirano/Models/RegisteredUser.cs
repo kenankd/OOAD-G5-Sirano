@@ -6,11 +6,11 @@ namespace Sirano.Models
     {
         [Key]
         public int Id { get; set; }
-        public string fullName { get; set; }
-        public string address { get; set; }
-        public string phoneNumber { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
+        public string FullName { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
         public RegisteredUser() { }
     }
 }

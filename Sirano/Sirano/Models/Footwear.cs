@@ -2,7 +2,7 @@
 {
     public class Footwear: Product
     {
-        public FootwearCategory category { get; set; }
+        public FootwearCategory Category { get; set; }
         public Footwear() { }
     }
 }

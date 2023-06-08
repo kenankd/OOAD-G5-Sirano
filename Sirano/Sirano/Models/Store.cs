@@ -7,12 +7,12 @@ namespace Sirano.Models
     public class Store
     {
         [Key]
-        public int id { get; set; }
-        public string address { get; set; }
-        public string city { get; set; }
+        public int Id { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
         [ForeignKey("Product")]
-        public int productID { get; set; }
-        public Product products { get; set; }
+        public int ProductID { get; set; }
+        public Product Products { get; set; }
         public Store() { }
     }
 }

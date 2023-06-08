@@ -6,9 +6,9 @@ namespace Sirano.Models
     public class Review
     {
         [Key]
-        public int id { get; set; }
-        public double rating { get; set; }
-        public string comment { get; set; }
+        public int Id { get; set; }
+        public double Rating { get; set; }
+        public string Comment { get; set; }
         [ForeignKey("Product")]
         public int ProductID { get; set; }  
         public Product Product { get; set; }   

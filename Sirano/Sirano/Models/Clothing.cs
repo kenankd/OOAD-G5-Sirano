@@ -4,7 +4,7 @@ namespace Sirano.Models
 {
     public class Clothing: Product
     {
-        public ClothingCategory category { get; set; }
+        public ClothingCategory Category { get; set; }
         public Clothing() { }
 
     }

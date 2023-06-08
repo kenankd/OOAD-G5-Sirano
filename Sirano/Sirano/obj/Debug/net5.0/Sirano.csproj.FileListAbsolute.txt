@@ -381,3 +381,9 @@ C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\RegisterConfirmation.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\Create.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\Delete.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\Details.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\Edit.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Index.cshtml.g.cs

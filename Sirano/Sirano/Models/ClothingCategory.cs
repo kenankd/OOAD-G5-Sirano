@@ -9,6 +9,7 @@
         Jackets,
         Blazers,
         Skirts,
+        Dresses,
         Pants,
         Jeans
     }

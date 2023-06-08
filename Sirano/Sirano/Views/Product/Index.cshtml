@@ -51,11 +51,11 @@
     {
         if (counter < 10) // Only show the first 10 products
         {
-            string actionLink = Url.Action("Details", "Product", new { id = product.id });
+            string actionLink = Url.Action("Details", "Product", new { id = product.Id });
 
             <a href="@actionLink">
                 <div class="product-card">
-                    <img src="@Url.Content(product.image)" alt="@product.name" class="product-image" style="margin-left:100px">
+                    <img src="@Url.Content(product.Image)" alt="@product.Name" class="product-image" style="margin-left:100px">
                 </div>
             </a>
             counter++;

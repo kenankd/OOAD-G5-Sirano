@@ -23,17 +23,17 @@ namespace Sirano.Controllers
         public async Task<IActionResult> Index(bool isMen, string productType)
         {
             var products = _context.Product;
-            var filteredProducts = products.Where(p => p.men == isMen);
+            var filteredProducts = products.Where(p => p.Men == isMen);
 
             if (!string.IsNullOrEmpty(productType))
             {
                 switch (productType.ToLower())
                 {
                     case "footwear":
-                        filteredProducts = filteredProducts.Where(p => p is Footwear && p.men == isMen);
+                        filteredProducts = filteredProducts.Where(p => p is Footwear && p.Men == isMen);
                         break;
                     case "clothing":
-                        filteredProducts = filteredProducts.Where(p => p is Clothing && p.men == isMen);
+                        filteredProducts = filteredProducts.Where(p => p is Clothing && p.Men == isMen);
                         break;
                 }
             }
@@ -48,7 +48,7 @@ namespace Sirano.Controllers
                 return NotFound();
             }
             var product = await _context.Product
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
                 return NotFound();
@@ -103,7 +103,7 @@ namespace Sirano.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,discount,reviewID,price,colour")] Product product)
         {
-            if (id != product.id)
+            if (id != product.Id)
             {
                 return NotFound();
             }
@@ -117,7 +117,7 @@ namespace Sirano.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.id))
+                    if (!ProductExists(product.Id))
                     {
                         return NotFound();
                     }
@@ -140,7 +140,7 @@ namespace Sirano.Controllers
             }
 
             var product = await _context.Product
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
                 return NotFound();
@@ -162,7 +162,7 @@ namespace Sirano.Controllers
 
         private bool ProductExists(int id)
         {
-            return _context.Product.Any(e => e.id == id);
+            return _context.Product.Any(e => e.Id == id);
         }
         
     }

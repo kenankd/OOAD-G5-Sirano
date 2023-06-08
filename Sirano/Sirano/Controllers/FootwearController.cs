@@ -35,7 +35,7 @@ namespace Sirano.Controllers
             }
 
             var footwear = await _context.Footwear
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (footwear == null)
             {
                 return NotFound();
@@ -90,7 +90,7 @@ namespace Sirano.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,size,category,discount,reviewID,price,colour")] Footwear footwear)
         {
-            if (id != footwear.id)
+            if (id != footwear.Id)
             {
                 return NotFound();
             }
@@ -104,7 +104,7 @@ namespace Sirano.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FootwearExists(footwear.id))
+                    if (!FootwearExists(footwear.Id))
                     {
                         return NotFound();
                     }
@@ -127,7 +127,7 @@ namespace Sirano.Controllers
             }
 
             var footwear = await _context.Footwear
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (footwear == null)
             {
                 return NotFound();
@@ -149,7 +149,7 @@ namespace Sirano.Controllers
 
         private bool FootwearExists(int id)
         {
-            return _context.Footwear.Any(e => e.id == id);
+            return _context.Footwear.Any(e => e.Id == id);
         }
     }
 }

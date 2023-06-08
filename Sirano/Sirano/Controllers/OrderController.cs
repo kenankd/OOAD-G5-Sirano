@@ -22,7 +22,7 @@ namespace Sirano.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Order.Include(o => o.cart);
+            var applicationDbContext = _context.Order.Include(o => o.Cart);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,8 +35,8 @@ namespace Sirano.Controllers
             }
 
             var order = await _context.Order
-                .Include(o => o.cart)
-                .FirstOrDefaultAsync(m => m.id == id);
+                .Include(o => o.Cart)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (order == null)
             {
                 return NotFound();
@@ -93,7 +93,7 @@ namespace Sirano.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,orderDate,deliveryDate,productID,price,status,paymentMethod,userID")] Order order)
         {
-            if (id != order.id)
+            if (id != order.Id)
             {
                 return NotFound();
             }
@@ -107,7 +107,7 @@ namespace Sirano.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OrderExists(order.id))
+                    if (!OrderExists(order.Id))
                     {
                         return NotFound();
                     }
@@ -131,8 +131,8 @@ namespace Sirano.Controllers
             }
 
             var order = await _context.Order
-                .Include(o => o.cart)
-                .FirstOrDefaultAsync(m => m.id == id);
+                .Include(o => o.Cart)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (order == null)
             {
                 return NotFound();
@@ -154,7 +154,7 @@ namespace Sirano.Controllers
 
         private bool OrderExists(int id)
         {
-            return _context.Order.Any(e => e.id == id);
+            return _context.Order.Any(e => e.Id == id);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Sirano.Controllers
             }
 
             var review = await _context.Review
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (review == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace Sirano.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,rating,comment")] Review review)
         {
-            if (id != review.id)
+            if (id != review.Id)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace Sirano.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ReviewExists(review.id))
+                    if (!ReviewExists(review.Id))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace Sirano.Controllers
             }
 
             var review = await _context.Review
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (review == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace Sirano.Controllers
 
         private bool ReviewExists(int id)
         {
-            return _context.Review.Any(e => e.id == id);
+            return _context.Review.Any(e => e.Id == id);
         }
     }
 }

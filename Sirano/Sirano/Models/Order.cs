@@ -9,14 +9,14 @@ namespace Sirano.Models
     public class Order
     {
         [Key]
-        public int id { get; set; }
-        public string orderDate { get; set; }
-        public string deliveryDate { get; set; }
-        public string status { get; set; }
-        public PaymentMethod paymentMethod { get; set; }
+        public int Id { get; set; }
+        public string OrderDate { get; set; }
+        public string DeliveryDate { get; set; }
+        public string Status { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
         [ForeignKey("Cart")]
         public int CartID { get; set; }
-        public Cart cart { get; set; }
+        public Cart Cart { get; set; }
         //public object Cart { get; internal set; }
 
         public Order() { }
