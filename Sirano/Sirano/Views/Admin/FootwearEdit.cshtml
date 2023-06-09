@@ -1,8 +1,9 @@
-﻿@model Sirano.Models.Product
+﻿@model Sirano.Models.Footwear
 
 @{
     ViewData["Title"] = "Admin";
 }
+
 <style>
     .container {
         display: flex;
@@ -13,14 +14,29 @@
     }
 </style>
 <div style="margin-top:20px; margin-left:45px">
-    <h style="font-family: Playfair Display; font-weight:100; font-size: 45px; color:rgba(3,3,3,0.59)">EDIT</h>
+    <h style="font-family: Playfair Display; font-weight:100; font-size: 45px; color:#ca7b80">EDIT</h>
 </div>
+
 
 <div class="container">
     <div class="div4">
         <section>
-            <form asp-action="Edit">
+            <form asp-action="FootwearEdit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Category" class="control-label" style="font-family: Playfair Display; font-weight:100; font-size: 15px; color:#ca7b80;  margin-right:25px; margin-left:30px">CATEGORY:</label>
+                    </div>
+                    <div style="margin-left:30px; margin-right:30px">
+                        <select asp-for="Category" class="form-control">
+                            @foreach (var category in Enum.GetValues(typeof(FootwearCategory)))
+                            {
+                                <option value="@category">@category</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+                </div>
                 <input type="hidden" asp-for="Id" />
                 <div class="form-group">
                     <div>
@@ -78,23 +94,24 @@
                     </div>
                 </div>
                 <div class="form-group" style="margin-left:30px; margin-right:30px">
-                    <input type="submit" value="EDIT" class="btn btn-primary" style="background-color:#ca7b80; border:none; padding: 7px 150px;" />
+                    <input type="submit" value="EDIT" class="btn btn-primary" style="font-family: IBM Plex Sans; font-size: 15px; background-color:#ca7b80; border:none; padding: 7px 150px;" />
                 </div>
             </form>
         </section>
     </div>
-    <div style="margin-top:100px; margin-left:180px">
-        <img src="/images/ciko.png" width="250" height="400">
-    </div>
-    <div style="margin-top:100px">
-        <img src="/images/zena.png" width="300" height="400">
+    <div style="margin-top:50px; margin-left:280px">
+        <img src="@Model.Image" width="350" height="500">
     </div>
 </div>
 
 
 <div style="margin-left:45px">
-    <a asp-action="Index" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80"><b>BACK TO PRODUCTS</b></a>
+    <a asp-action="Footwear" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80"><b>BACK TO PRODUCTS</b></a>
 </div>
 
 
-
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

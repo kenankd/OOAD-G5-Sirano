@@ -16,71 +16,17 @@
     }
 </style>
 
+
+<h style="font-family: Playfair Display; font-weight:100; font-size: 65px; color:#ca7b80; margin-left:0px">SIRANO ADMIN</h>
 <div class="container">
-    <div>
-        <h style="font-family: Playfair Display; font-weight:100; font-size: 65px; color:rgba(3,3,3,0.59)">PRODUCTS</h>
+    <div class="clickable-div" onclick="location.href='@Url.Action("Clothing", "Admin")'" style="margin-left:100px; margin-right:100px; margin-top:40px; cursor: pointer;">
+        <img src="/images/zena.png" width="360" height="460">
+        <p style="font-family: Playfair Display; font-size: 20px; margin-left:105px; margin-top:10px; color:#ca7b80"><b>CLOTHING</b></p>
     </div>
-    <div style="margin-left:630px; margin-top:30px">
-        <a asp-action="Create" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80"><b>ADD PRODUCT</b></a>
+    <div class="clickable-div" onclick="location.href='@Url.Action("Footwear", "Admin")'" style=" margin-top:70px; cursor: pointer;">
+        <img src="/images/stiklice.png" width="430" height="430">
+        <p style="font-family: Playfair Display; font-size: 20px; margin-left:145px; margin-top:10px; color:#ca7b80"><b>FOOTWEAR</b></p>
     </div>
 </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
-                PRICE
-            </th>
-            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
-                COLOUR
-            </th>
-            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
-                IMAGE
-            </th>
-            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
-                NAME
-            </th>
-            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
-                MEN
-            </th>
-            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
-                CART
-            </th>
-            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
-                SUMMARY
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                    @Html.DisplayFor(modelItem => item.Colour)
-                </td>
-                <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                    @Html.DisplayFor(modelItem => item.Image)
-                </td>
-                <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                    @Html.DisplayFor(modelItem => item.Men)
-                </td>
 
-                <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                    @Html.DisplayFor(modelItem => item.Summary)
-                </td>
-                <td>
-                    <a asp-action="Edit" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@item.Id"><b>EDIT</b></a>
-                    <a asp-action="Details" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@item.Id"><b>DETAILS</b></a>
-                    <a asp-action="Delete" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@item.Id"><b>DELETE</b></a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>

@@ -1,0 +1,83 @@
+﻿@model Sirano.Models.Footwear
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<style>
+    .container {
+        display: flex;
+    }
+
+    .div4 {
+        flex-grow: 1;
+    }
+</style>
+<div style="margin-top:20px; margin-left:45px; margin-bottom:20px">
+    <h style="font-family: Playfair Display; font-weight:100; font-size: 45px; color:#ca7b80">DETAILS</h>
+</div>
+
+<div class="container">
+    <div>
+        <div class="container">
+            <div style="margin-left:23px; margin-top:105px">
+                <p class="col-sm-2" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                    CATEGORY
+                </p>
+                <p class="col-sm-2" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                    PRICE
+                </p>
+                <p class="col-sm-2" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                    COLOUR
+                </p>
+                <p class="col-sm-2" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                    IMAGE
+                </p>
+                <p class="col-sm-2" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                    NAME
+                </p>
+                <p class="col-sm-2" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                    MEN
+                </p>
+                <p class="col-sm-2" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                    SUMMARY
+                </p>
+            </div>
+            <div style="margin-left:45px; margin-top:105px">
+                <p class="col-sm-10" style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
+                    @Html.DisplayFor(model => model.Category)
+                </p>
+                <p class="col-sm-10" style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
+                    @Html.DisplayFor(model => model.Price)
+                </p>
+                <p class="col-sm-10" style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
+                    @Html.DisplayFor(model => model.Colour)
+                </p>
+                <p class="col-sm-10" style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
+                    @Html.DisplayFor(model => model.Image)
+                </p>
+                <p class="col-sm-10" style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
+                    @Html.DisplayFor(model => model.Name)
+                </p>
+                <p class="col-sm-10" style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
+                    @Html.DisplayFor(model => model.Men)
+                </p>
+                <p class="col-sm-10" style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
+                    @Html.DisplayFor(model => model.Summary)
+                </p>
+            </div>
+
+        </div>
+        <div style="margin-left:50px; margin-top:40px">
+            <a asp-action="FootwearEdit" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@Model.Id"><b>EDIT</b></a>
+        </div>
+        <div style="margin-left:50px">
+            <a asp-action="Footwear" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80"><b>BACK TO PRODUCTS</b></a>
+        </div>
+    </div>
+
+    <div style="margin-top:25px; margin-left:80px">
+        <img src="@Model.Image" width="350" height="500">
+    </div>
+</div>
+

@@ -25,70 +25,86 @@ namespace Sirano.Controllers
             return View(await _context.Product.ToListAsync());
         }
 
-        // GET: Admin/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Clothing
+        public async Task<IActionResult> Clothing()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var product = await _context.Product
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            return View(product);
+            return View(await _context.Clothing.ToListAsync());
         }
 
-        // GET: Admin/Create
-        public IActionResult Create()
+        // GET: Footwear
+        public async Task<IActionResult> Footwear()
+        {
+            return View(await _context.Footwear.ToListAsync());
+        }
+
+        // GET: Clothing/Create
+        public IActionResult ClothingCreate()
         {
             return View();
         }
 
-        // POST: Admin/Create
+        // POST: Clothing/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Price,Colour,Image,Name,Men,Summary")] Product product)
+        public async Task<IActionResult> ClothingCreate([Bind("Category,Id,Price,Colour,Image,Name,Men,Summary")] Clothing clothing)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                _context.Add(clothing);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Clothing));
             }
-            return View(product);
+            return View(clothing);
         }
 
-        // GET: Admin/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: Footwear/Create
+        public IActionResult FootwearCreate()
+        {
+            return View();
+        }
+
+        // POST: Footwear/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> FootwearCreate([Bind("Category,Id,Price,Colour,Image,Name,Men,Summary")] Footwear footwear)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(footwear);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Footwear));
+            }
+            return View(footwear);
+        }
+
+        // GET: Clothing/Edit/5
+        public async Task<IActionResult> ClothingEdit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Product.FindAsync(id);
-            if (product == null)
+            var clothing = await _context.Clothing.FindAsync(id);
+            if (clothing == null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View(clothing);
         }
 
-        // POST: Admin/Edit/5
+        // POST: Clothing/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Price,Colour,Image,Name,Men,Summary")] Product product)
+        public async Task<IActionResult> ClothingEdit(int id, [Bind("Category,Id,Price,Colour,Image,Name,Men,Summary")] Clothing clothing)
         {
-            if (id != product.Id)
+            if (id != clothing.Id)
             {
                 return NotFound();
             }
@@ -97,12 +113,12 @@ namespace Sirano.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    _context.Update(clothing);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
+                    if (!ClothingExists(clothing.Id))
                     {
                         return NotFound();
                     }
@@ -111,43 +127,166 @@ namespace Sirano.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Clothing));
             }
-            return View(product);
+            return View(clothing);
         }
 
-        // GET: Admin/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: Footwear/Edit/5
+        public async Task<IActionResult> FootwearEdit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Product
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            var footwear = await _context.Footwear.FindAsync(id);
+            if (footwear == null)
+            {
+                return NotFound();
+            }
+            return View(footwear);
+        }
+
+        // POST: Footwear/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> FootwearEdit(int id, [Bind("Category,Id,Price,Colour,Image,Name,Men,Summary")] Footwear footwear)
+        {
+            if (id != footwear.Id)
             {
                 return NotFound();
             }
 
-            return View(product);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(footwear);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!FootwearExists(footwear.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Footwear));
+            }
+            return View(footwear);
         }
 
-        // POST: Admin/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // GET: Clothing/Delete/5
+        public async Task<IActionResult> ClothingDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var clothing = await _context.Clothing
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (clothing == null)
+            {
+                return NotFound();
+            }
+
+            return View(clothing);
+        }
+
+        // POST: Clothing/Delete/5
+        [HttpPost, ActionName("ClothingDelete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> ClothingDeleteConfirmed(int id)
         {
-            var product = await _context.Product.FindAsync(id);
-            _context.Product.Remove(product);
+            var clothing = await _context.Clothing.FindAsync(id);
+            _context.Clothing.Remove(clothing);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Clothing));
         }
 
-        private bool ProductExists(int id)
+        private bool ClothingExists(int id)
         {
-            return _context.Product.Any(e => e.Id == id);
+            return _context.Clothing.Any(e => e.Id == id);
         }
+
+        // GET: Footwear/Delete/5
+        public async Task<IActionResult> FootwearDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var footwear = await _context.Footwear
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (footwear == null)
+            {
+                return NotFound();
+            }
+
+            return View(footwear);
+        }
+
+        // POST: Footwear/Delete/5
+        [HttpPost, ActionName("FootwearDelete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> FootwearDeleteConfirmed(int id)
+        {
+            var footwear = await _context.Footwear.FindAsync(id);
+            _context.Footwear.Remove(footwear);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Footwear));
+        }
+
+        private bool FootwearExists(int id)
+        {
+            return _context.Footwear.Any(e => e.Id == id);
+        }
+
+        // GET: Clothing/Details/5
+        public async Task<IActionResult> ClothingDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var clothing = await _context.Clothing
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (clothing == null)
+            {
+                return NotFound();
+            }
+
+            return View(clothing);
+        }
+        // GET: Footwear/Details/5
+        public async Task<IActionResult> FootwearDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var footwear = await _context.Footwear
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (footwear == null)
+            {
+                return NotFound();
+            }
+
+            return View(footwear);
+        }
+
+
+        
     }
 }

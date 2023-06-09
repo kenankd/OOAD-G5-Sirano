@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Sirano.Data;
 using Sirano.Models;
 
-namespace Sirano.Views
+namespace Sirano.Controllers
 {
     public class CartController : Controller
     {

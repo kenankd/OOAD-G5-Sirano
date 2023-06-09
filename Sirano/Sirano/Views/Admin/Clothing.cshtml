@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Sirano.Models.Clothing>
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<style>
+    .container {
+        display: flex;
+    }
+
+    .font {
+        font-family: IBM Plex Sans;
+        font-size: 15px;
+        color: black;
+    }
+</style>
+
+
+<div class="container">
+    <div>
+        <h style="font-family: Playfair Display; font-weight:100; font-size: 65px; color:#ca7b80">CLOTHING</h>
+    </div>
+    <div style="margin-left:630px; margin-top:30px">
+        <a asp-action="ClothingCreate" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80"><b>ADD PRODUCT</b></a>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80; text-transform: uppercase;">
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                PRICE
+            </th>
+            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                COLOUR
+            </th>
+            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                IMAGE
+            </th>
+            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                NAME
+            </th>
+            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                MEN
+            </th>
+            <th style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80">
+                SUMMARY
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Colour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Men)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </td>
+                <td>
+                    <a asp-action="ClothingEdit" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@item.Id"><b>EDIT</b></a>
+                    <a asp-action="ClothingDetails" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@item.Id"><b>DETAILS</b></a>
+                    <a asp-action="ClothingDelete" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@item.Id"><b>DELETE</b></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

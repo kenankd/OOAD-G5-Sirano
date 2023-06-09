@@ -44,13 +44,8 @@
 
 
 <div class="container">
-    @{
-        int counter = 0;
-    }
     @foreach (var product in Model)
     {
-        if (counter < 10) // Only show the first 10 products
-        {
             string actionLink = Url.Action("Details", "Product", new { id = product.Id });
 
             <a href="@actionLink">
@@ -58,8 +53,6 @@
                     <img src="@Url.Content(product.Image)" alt="@product.Name" class="product-image" style="margin-left:100px">
                 </div>
             </a>
-            counter++;
-        }
     }
 
 
