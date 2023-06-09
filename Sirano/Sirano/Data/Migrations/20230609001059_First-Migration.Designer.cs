@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sirano.Data;
 
-namespace Sirano.Migrations
+namespace Sirano.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230608133446_FirstMigration")]
+    [Migration("20230609001059_First-Migration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -228,6 +228,9 @@ namespace Sirano.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Bought")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Size")
                         .HasColumnType("nvarchar(max)");
 
@@ -243,7 +246,7 @@ namespace Sirano.Migrations
 
             modelBuilder.Entity("Sirano.Models.Order", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -251,19 +254,19 @@ namespace Sirano.Migrations
                     b.Property<int>("CartID")
                         .HasColumnType("int");
 
-                    b.Property<string>("deliveryDate")
+                    b.Property<string>("DeliveryDate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("orderDate")
+                    b.Property<string>("OrderDate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("paymentMethod")
+                    b.Property<int>("PaymentMethod")
                         .HasColumnType("int");
 
-                    b.Property<string>("status")
+                    b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("CartID");
 
@@ -272,37 +275,57 @@ namespace Sirano.Migrations
 
             modelBuilder.Entity("Sirano.Models.Product", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CartId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("colour")
+                    b.Property<string>("Colour")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("image")
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("men")
+                    b.Property<bool>("Men")
                         .HasColumnType("bit");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("price")
+                    b.Property<string>("Price")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("summary")
+                    b.Property<string>("Summary")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
-
-                    b.HasIndex("CartId");
+                    b.HasKey("Id");
 
                     b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("Sirano.Models.Product_Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CartID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Size")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("Product_Cart");
                 });
 
             modelBuilder.Entity("Sirano.Models.RegisteredUser", b =>
@@ -312,19 +335,19 @@ namespace Sirano.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("address")
+                    b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("email")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("fullName")
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("password")
+                    b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("phoneNumber")
+                    b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -334,21 +357,21 @@ namespace Sirano.Migrations
 
             modelBuilder.Entity("Sirano.Models.Review", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
-                    b.Property<string>("comment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("rating")
+                    b.Property<double>("Rating")
                         .HasColumnType("float");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductID");
 
@@ -357,23 +380,23 @@ namespace Sirano.Migrations
 
             modelBuilder.Entity("Sirano.Models.Store", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("address")
+                    b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("city")
+                    b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("productID")
+                    b.Property<int>("ProductID")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("productID");
+                    b.HasIndex("ProductID");
 
                     b.ToTable("Store");
                 });
@@ -382,7 +405,7 @@ namespace Sirano.Migrations
                 {
                     b.HasBaseType("Sirano.Models.Product");
 
-                    b.Property<int>("category")
+                    b.Property<int>("Category")
                         .HasColumnType("int");
 
                     b.ToTable("Clothing");
@@ -392,7 +415,7 @@ namespace Sirano.Migrations
                 {
                     b.HasBaseType("Sirano.Models.Product");
 
-                    b.Property<int>("category")
+                    b.Property<int>("Category")
                         .HasColumnType("int");
 
                     b.ToTable("Footwear");
@@ -462,24 +485,32 @@ namespace Sirano.Migrations
 
             modelBuilder.Entity("Sirano.Models.Order", b =>
                 {
-                    b.HasOne("Sirano.Models.Cart", "cart")
+                    b.HasOne("Sirano.Models.Cart", "Cart")
                         .WithMany()
                         .HasForeignKey("CartID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("cart");
+                    b.Navigation("Cart");
                 });
 
-            modelBuilder.Entity("Sirano.Models.Product", b =>
+            modelBuilder.Entity("Sirano.Models.Product_Cart", b =>
                 {
                     b.HasOne("Sirano.Models.Cart", "Cart")
-                        .WithMany("Product")
-                        .HasForeignKey("CartId")
+                        .WithMany()
+                        .HasForeignKey("CartID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Sirano.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Cart");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Sirano.Models.Review", b =>
@@ -495,20 +526,20 @@ namespace Sirano.Migrations
 
             modelBuilder.Entity("Sirano.Models.Store", b =>
                 {
-                    b.HasOne("Sirano.Models.Product", "products")
+                    b.HasOne("Sirano.Models.Product", "Products")
                         .WithMany()
-                        .HasForeignKey("productID")
+                        .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("products");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Sirano.Models.Clothing", b =>
                 {
                     b.HasOne("Sirano.Models.Product", null)
                         .WithOne()
-                        .HasForeignKey("Sirano.Models.Clothing", "id")
+                        .HasForeignKey("Sirano.Models.Clothing", "Id")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
                 });
@@ -517,14 +548,9 @@ namespace Sirano.Migrations
                 {
                     b.HasOne("Sirano.Models.Product", null)
                         .WithOne()
-                        .HasForeignKey("Sirano.Models.Footwear", "id")
+                        .HasForeignKey("Sirano.Models.Footwear", "Id")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Sirano.Models.Cart", b =>
-                {
-                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

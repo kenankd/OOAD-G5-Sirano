@@ -10,8 +10,8 @@ namespace Sirano.Models
         public double Rating { get; set; }
         public string Comment { get; set; }
         [ForeignKey("Product")]
-        public int ProductID { get; set; }  
-        public Product Product { get; set; }   
+        public int ProductID { get; set; }
+        public Product Product { get; set; }
         public Review() { }
     }
 }

@@ -22,6 +22,22 @@
         white-space: nowrap;
         flex-grow: 1;
     }
+
+    .button3 {
+        background-color: rgba(3,3,3,0);
+        border: none;
+        border-radius: 4px;
+        padding: 3px 10px;
+        text-align: center;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: IBM Plex Sans;
+        display: inline-block;
+        font-size: 13px;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-grow: 1;
+    }
 </style>
 
 
@@ -30,16 +46,14 @@
         <button type="submit" class="dugmic">SIRANO</button>
     </form>
     <div style="margin-left:800px;"></div>
-    @if (!User.Identity.IsAuthenticated)
-    {
+    
         <form action="/Identity/Account/Login">
             <button type="submit" class="button3" style="margin-top:15px">LOG IN</button>
         </form>
-     }
-    @if (User.Identity.IsAuthenticated)
-    {
-        <a href="/Identity/Account/Register">
+    
+    
+        <a href="/Cart">
             <img src="@Url.Content("~/images/korpa.png")" width="20" height="20" style="margin-top:15px;">
         </a>
-    }
+    
 </div>

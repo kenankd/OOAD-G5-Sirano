@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sirano.Data;
 
-namespace Sirano.Migrations
+namespace Sirano.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -226,6 +226,9 @@ namespace Sirano.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Bought")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Size")
                         .HasColumnType("nvarchar(max)");
 
@@ -275,9 +278,6 @@ namespace Sirano.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CartId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Colour")
                         .HasColumnType("nvarchar(max)");
 
@@ -298,9 +298,32 @@ namespace Sirano.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CartId");
-
                     b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("Sirano.Models.Product_Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CartID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Size")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("Product_Cart");
                 });
 
             modelBuilder.Entity("Sirano.Models.RegisteredUser", b =>
@@ -469,15 +492,23 @@ namespace Sirano.Migrations
                     b.Navigation("Cart");
                 });
 
-            modelBuilder.Entity("Sirano.Models.Product", b =>
+            modelBuilder.Entity("Sirano.Models.Product_Cart", b =>
                 {
                     b.HasOne("Sirano.Models.Cart", "Cart")
-                        .WithMany("Product")
-                        .HasForeignKey("CartId")
+                        .WithMany()
+                        .HasForeignKey("CartID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Sirano.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Cart");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Sirano.Models.Review", b =>
@@ -518,11 +549,6 @@ namespace Sirano.Migrations
                         .HasForeignKey("Sirano.Models.Footwear", "Id")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Sirano.Models.Cart", b =>
-                {
-                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

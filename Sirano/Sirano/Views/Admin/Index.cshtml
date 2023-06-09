@@ -5,13 +5,14 @@
 }
 
 <style>
-    .container{
-        display:flex;
+    .container {
+        display: flex;
     }
-    .font{
-        font-family: IBM Plex Sans; 
-        font-size: 15px; 
-        color:black;
+
+    .font {
+        font-family: IBM Plex Sans;
+        font-size: 15px;
+        color: black;
     }
 </style>
 
@@ -52,35 +53,34 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+        @foreach (var item in Model)
+        {
+            <tr>
                 <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-                <td style =" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                @Html.DisplayFor(modelItem => item.Colour)
-            </td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
                 <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
+                    @Html.DisplayFor(modelItem => item.Colour)
+                </td>
                 <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
                 <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                @Html.DisplayFor(modelItem => item.Men)
-            </td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
                 <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                @Html.DisplayFor(modelItem => item.Cart.Id)
-            </td>
+                    @Html.DisplayFor(modelItem => item.Men)
+                </td>
+
                 <td style=" font-family: IBM Plex Sans; font-size: 15px; color:black">
-                @Html.DisplayFor(modelItem => item.Summary)
-            </td>
-            <td>
-                    <a asp-action="Edit" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@item.Id"><b>EDIT</b></a> |
-                    <a asp-action="Details" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@item.Id"><b>DETAILS</b></a> |
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </td>
+                <td>
+                    <a asp-action="Edit" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@item.Id"><b>EDIT</b></a>
+                    <a asp-action="Details" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@item.Id"><b>DETAILS</b></a>
                     <a asp-action="Delete" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80" asp-route-id="@item.Id"><b>DELETE</b></a>
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

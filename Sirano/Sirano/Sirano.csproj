@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>aspnet-Sirano-9f1ba88a-67ed-4a6e-a3b7-6496ad0d42b6</UserSecretsId>
+    <UserSecretsId>aspnet-Sirano-ce5baaf6-0dd5-441f-8a5a-5db9ced90040</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,10 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Clothing\" />
-    <Folder Include="Views\Footwear\" />
-    <Folder Include="Views\Order\" />
-    <Folder Include="Views\RegisteredUser\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

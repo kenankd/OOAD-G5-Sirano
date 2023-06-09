@@ -1,61 +1,100 @@
 ﻿@model Sirano.Models.Product
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Admin";
 }
+<style>
+    .container {
+        display: flex;
+    }
 
-<h1>Edit</h1>
+    .div4 {
+        flex-grow: 1;
+    }
+</style>
+<div style="margin-top:20px; margin-left:45px">
+    <h style="font-family: Playfair Display; font-weight:100; font-size: 45px; color:rgba(3,3,3,0.59)">EDIT</h>
+</div>
 
-<h4>Product</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colour" class="control-label"></label>
-                <input asp-for="Colour" class="form-control" />
-                <span asp-validation-for="Colour" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Men" /> @Html.DisplayNameFor(model => model.Men)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="CartId" class="control-label"></label>
-                <select asp-for="CartId" class="form-control" asp-items="ViewBag.CartId"></select>
-                <span asp-validation-for="CartId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Summary" class="control-label"></label>
-                <input asp-for="Summary" class="form-control" />
-                <span asp-validation-for="Summary" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container">
+    <div class="div4">
+        <section>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Price" class="control-label" style="font-family: Playfair Display; font-weight:100; font-size: 15px; color:#ca7b80;  margin-right:25px; margin-left:30px">PRICE:</label>
+                    </div>
+                    <div style="margin-left:30px; margin-right:30px">
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Colour" class="control-label" style="font-family: Playfair Display; font-weight:100; font-size: 15px; color:#ca7b80;  margin-right:15px; margin-left:30px">COLOUR:</label>
+                    </div>
+                    <div style="margin-left:30px; margin-right:30px">
+                        <input asp-for="Colour" class="form-control" />
+                        <span asp-validation-for="Colour" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Image" class="control-label" style="font-family: Playfair Display; font-weight:100; font-size: 15px; color:#ca7b80;  margin-right:15px; margin-left:30px">IMAGE:</label>
+                    </div>
+                    <div style="margin-left:30px; margin-right:30px">
+                        <input asp-for="Image" class="form-control" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Name" class="control-label" style="font-family: Playfair Display; font-weight:100; font-size: 15px; color:#ca7b80;  margin-right:15px; margin-left:30px">NAME:</label>
+                    </div>
+                    <div style="margin-left:30px; margin-right:30px">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group form-check" style="display:flex">
+                    <div style="margin-left:30px">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Men" />
+                        </label>
+                    </div>
+                    <div>
+                        <p style="font-family: Playfair Display; font-weight:100; font-size: 15px; color:#ca7b80; margin-top:18px; margin-right:15px">MEN</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Summary" class="control-label" style="font-family: Playfair Display; font-weight:100; font-size: 15px; color:#ca7b80;  margin-right:15px; margin-left:30px">SUMMARY:</label>
+                    </div>
+                    <div style="margin-left:30px; margin-right:30px">
+                        <input asp-for="Summary" class="form-control" />
+                        <span asp-validation-for="Summary" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-left:30px; margin-right:30px">
+                    <input type="submit" value="EDIT" class="btn btn-primary" style="background-color:#ca7b80; border:none; padding: 7px 150px;" />
+                </div>
+            </form>
+        </section>
+    </div>
+    <div style="margin-top:100px; margin-left:180px">
+        <img src="/images/ciko.png" width="250" height="400">
+    </div>
+    <div style="margin-top:100px">
+        <img src="/images/zena.png" width="300" height="400">
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+
+<div style="margin-left:45px">
+    <a asp-action="Index" style=" font-family: IBM Plex Sans; font-size: 15px; color:#ca7b80"><b>BACK TO PRODUCTS</b></a>
 </div>
+
+
 

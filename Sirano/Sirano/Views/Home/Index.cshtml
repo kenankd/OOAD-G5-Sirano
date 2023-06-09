@@ -12,23 +12,55 @@
     .container {
         display: flex;
     }
+
+    .button3 {
+        background-color: rgba(3,3,3,0);
+        border: none;
+        border-radius: 4px;
+        padding: 3px 10px;
+        text-align: center;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: IBM Plex Sans;
+        display: inline-block;
+        font-size: 13px;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-grow: 1;
+    }
+
+    .button2 {
+        background-color: rgba(3,3,3,0.57);
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 8px 20px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 17px;
+        margin: 2px 2px;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-grow: 1;
+    }
 </style>
 
 <body>
     <div class="container">
         <div>
-            <form action="/Review/Create">
+            <form action="Home/Map">
                 <button type="submit" class="button3" style="margin-left:1050px; color:white; margin-top:15px">WHERE TO FIND US</button>
             </form>
         </div>
-        @if (!User.Identity.IsAuthenticated)
-        {
+        
             <div>
                 <form action="/Identity/Account/Login">
                     <button type="submit" class="button3" style="margin-left:10px; color:white; margin-top:15px">LOG IN</button>
                 </form>
             </div>
-        }
+        
     </div>
     <div>
         <form action="Home/Privacy">

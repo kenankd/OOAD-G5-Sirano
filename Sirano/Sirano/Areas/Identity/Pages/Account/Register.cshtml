@@ -12,6 +12,22 @@
     .div4 {
         flex-grow: 1;
     }
+
+    .button1 {
+        background-color: #606060;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 7px 150px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 2px 2px;
+        cursor: pointer;
+        white-space: nowrap;
+    }
 </style>
 
 <div style="margin-top: 50px; margin-bottom: 30px; margin-left:12px">
@@ -25,23 +41,23 @@
                 <p style="font-family: Poppins; font-size: 20px; margin-left:2px"><i>Enter your registration details</i></p>
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div style="margin-top: 15px">
-                    <input asp-for="Input.Name" class="form-control" placeholder="Name"/>
+                    <input asp-for="Input.Name" class="form-control" placeholder="Name" />
                     <span asp-validation-for="Input.Name" class="text-danger"></span>
                 </div>
                 <div style="margin-top: 15px">
-                    <input asp-for="Input.Address" class="form-control" placeholder="Address"/>
+                    <input asp-for="Input.Address" class="form-control" placeholder="Address" />
                     <span asp-validation-for="Input.Address" class="text-danger"></span>
                 </div>
                 <div style="margin-top: 15px">
-                    <input asp-for="Input.Phone" class="form-control" placeholder="Phone"/>
+                    <input asp-for="Input.Phone" class="form-control" placeholder="Phone" />
                     <span asp-validation-for="Input.Phone" class="text-danger"></span>
                 </div>
                 <div style="margin-top: 15px">
-                    <input asp-for="Input.Email" class="form-control" placeholder="Email"/>
+                    <input asp-for="Input.Email" class="form-control" placeholder="Email" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div style="margin-top: 15px">
-                    <input asp-for="Input.Password" class="form-control" placeholder="Password"/>
+                    <input asp-for="Input.Password" class="form-control" placeholder="Password" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div style="margin-top: 40px;">

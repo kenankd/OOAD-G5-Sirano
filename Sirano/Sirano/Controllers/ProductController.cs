@@ -40,13 +40,14 @@ namespace Sirano.Controllers
             return View(await filteredProducts.ToListAsync());
         }
 
-        // GET: Products/Details/5
+        // GET: Product/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
+
             var product = await _context.Product
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
@@ -57,19 +58,18 @@ namespace Sirano.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
+        // GET: Product/Create
         public IActionResult Create()
         {
-            ViewData["reviewID"] = new SelectList(_context.Review, "id", "id");
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Product/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,discount,reviewID,price,colour")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Price,Colour,Image,Name,Men,Summary")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace Sirano.Controllers
             return View(product);
         }
 
-        // GET: Products/Edit/5
+        // GET: Product/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -96,12 +96,12 @@ namespace Sirano.Controllers
             return View(product);
         }
 
-        // POST: Products/Edit/5
+        // POST: Product/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,discount,reviewID,price,colour")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Price,Colour,Image,Name,Men,Summary")] Product product)
         {
             if (id != product.Id)
             {
@@ -131,7 +131,7 @@ namespace Sirano.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
+        // GET: Product/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -149,7 +149,7 @@ namespace Sirano.Controllers
             return View(product);
         }
 
-        // POST: Products/Delete/5
+        // POST: Product/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -164,6 +164,5 @@ namespace Sirano.Controllers
         {
             return _context.Product.Any(e => e.Id == id);
         }
-        
     }
 }

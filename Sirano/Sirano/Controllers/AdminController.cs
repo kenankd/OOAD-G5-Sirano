@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Sirano.Data;
 using Sirano.Models;
 
-namespace Sirano.Views
+namespace Sirano.Controllers
 {
     public class AdminController : Controller
     {
@@ -22,8 +22,7 @@ namespace Sirano.Views
         // GET: Admin
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Product.Include(p => p.Cart);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await _context.Product.ToListAsync());
         }
 
         // GET: Admin/Details/5
@@ -35,7 +34,6 @@ namespace Sirano.Views
             }
 
             var product = await _context.Product
-                .Include(p => p.Cart)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
@@ -48,7 +46,6 @@ namespace Sirano.Views
         // GET: Admin/Create
         public IActionResult Create()
         {
-            ViewData["CartId"] = new SelectList(_context.Cart, "Id", "Id");
             return View();
         }
 
@@ -57,7 +54,7 @@ namespace Sirano.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Price,Colour,Image,Name,Men,CartId,Summary")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Price,Colour,Image,Name,Men,Summary")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +62,6 @@ namespace Sirano.Views
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CartId"] = new SelectList(_context.Cart, "Id", "Id", product.CartId);
             return View(product);
         }
 
@@ -82,7 +78,6 @@ namespace Sirano.Views
             {
                 return NotFound();
             }
-            ViewData["CartId"] = new SelectList(_context.Cart, "Id", "Id", product.CartId);
             return View(product);
         }
 
@@ -91,7 +86,7 @@ namespace Sirano.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Price,Colour,Image,Name,Men,CartId,Summary")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Price,Colour,Image,Name,Men,Summary")] Product product)
         {
             if (id != product.Id)
             {
@@ -118,7 +113,6 @@ namespace Sirano.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CartId"] = new SelectList(_context.Cart, "Id", "Id", product.CartId);
             return View(product);
         }
 
@@ -131,7 +125,6 @@ namespace Sirano.Views
             }
 
             var product = await _context.Product
-                .Include(p => p.Cart)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {

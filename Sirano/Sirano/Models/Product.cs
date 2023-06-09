@@ -13,12 +13,9 @@ namespace Sirano.Models
         public string Image { get; set; }
         public string Name { get; set; }
         public Boolean Men { get; set; }
-        [ForeignKey("Cart")]
-        public int CartId { get; set; }
-        public Cart? Cart { get; set; }
 
         public string Summary { get; set; }
 
-        public Product(){}
-}
+        public Product() { }
+    }
 }

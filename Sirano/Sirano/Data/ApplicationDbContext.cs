@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Sirano.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -22,7 +21,7 @@ namespace Sirano.Data
         public DbSet<Review> Review { get; set; }
         public DbSet<Store> Store { get; set; }
         public DbSet<Cart> Cart { get; set; }
-        //public IEnumerable Cart { get; internal set; }
+        public DbSet<Product_Cart> Product_Cart { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,10 +32,9 @@ namespace Sirano.Data
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<Review>().ToTable("Review");
             modelBuilder.Entity<Store>().ToTable("Store");
-            modelBuilder.Entity<Cart>().ToTable("Cart").HasMany(c => c.Product).WithOne(p => p.Cart);
+            modelBuilder.Entity<Cart>().ToTable("Cart");
+            modelBuilder.Entity<Product_Cart>().ToTable("Product_Cart");
             base.OnModelCreating(modelBuilder);
         }
-
-        public DbSet<Sirano.Models.Cart> Cart_1 { get; set; }
     }
 }
