@@ -54,12 +54,14 @@
                 <button type="submit" class="button3" style="margin-left:1050px; color:white; margin-top:15px">WHERE TO FIND US</button>
             </form>
         </div>
-        
+        @if (!User.Identity.IsAuthenticated)
+        {
             <div>
                 <form action="/Identity/Account/Login">
                     <button type="submit" class="button3" style="margin-left:10px; color:white; margin-top:15px">LOG IN</button>
                 </form>
             </div>
+        }
         
     </div>
     <div>

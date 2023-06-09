@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Sirano.Models;
 
 namespace Sirano.Controllers
 {
+    [Authorize(Roles ="Administrator")]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,9 +22,9 @@ namespace Sirano.Controllers
         }
 
         // GET: Admin
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Product.ToListAsync());
+            return View();
         }
 
         // GET: Clothing

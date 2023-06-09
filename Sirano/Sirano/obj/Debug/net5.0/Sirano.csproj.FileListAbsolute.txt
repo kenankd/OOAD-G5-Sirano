@@ -368,11 +368,6 @@ C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Siran
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\ref\Sirano.dll
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\Clothing.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\Footwear.cshtml.g.cs
-C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Footwear\Create.cshtml.g.cs
-C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Footwear\Delete.cshtml.g.cs
-C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Footwear\Details.cshtml.g.cs
-C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Footwear\Edit.cshtml.g.cs
-C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Footwear\Index.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\ClothingCreate.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\FootwearCreate.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\ClothingEdit.cshtml.g.cs
