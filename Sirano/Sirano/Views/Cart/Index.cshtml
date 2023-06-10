@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<Sirano.Models.Product>
+
+<!DOCTYPE html>
 <partial name="_Header" />
 <html>
 <head>
@@ -81,32 +83,21 @@
 <body>
     <div class="container">
         <div class="product-container">
-            <div class="product-card">
-                <img src="/images/haljina5.jpg" alt="Proizvod 1" class="product-image">
-                <div class="product-info">
-                    <p>Haljina</p>
-                    <p>Cijena: $49.99</p>
+            @foreach (var product in Model)
+            {
+                <div class="product-card">
+                    <img src="@product.Image" alt="Product Image" class="product-image">
+                    <div class="product-info">
+                        <p>@product.Name</p>
+                        <p>Price: $@product.Price</p>
+                    </div>
                 </div>
-            </div>
-            <div class="product-card">
-                <img src="/images/duks4.jpg" alt="Proizvod 2" class="product-image">
-                <div class="product-info">
-                    <p>Duks</p>
-                    <p>Cijena: $29.99</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="~/images/majica.png" alt="Proizvod 3" class="product-image">
-                <div class="product-info">
-                    <p>Majica</p>
-                    <p>Cijena: $19.99</p>
-                </div>
-            </div>
+            }
         </div>
     </div>
     <div class="natpis" style="margin-top:50px">
         <div>
-            <p style="font-family: IBM Plex Sans; font-size: 17px; font-weight: 100; margin-top:8px; margin-left: 570px; color: rgba(20, 20, 20, 0.7);">TOTAL: $175.97</p>
+            <p style="font-family: IBM Plex Sans; font-size: 17px; font-weight: 100; margin-top:8px; margin-left: 570px; color: rgba(20, 20, 20, 0.7);">TOTAL: $@Model.Sum(p => Convert.ToDecimal(p.Price)).ToString("F2")</p>
         </div>
         <div>
             <form action="/Product/Create">

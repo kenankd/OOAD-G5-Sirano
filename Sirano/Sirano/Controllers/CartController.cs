@@ -24,8 +24,13 @@ namespace Sirano.Controllers
         // GET: Cart
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Cart.Include(c => c.RegisteredUser);
-            return View(await applicationDbContext.ToListAsync());
+            var user = await _context.RegisteredUser.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+            var cart = await _context.Cart.FirstOrDefaultAsync(c => c.UserID == user.Id && c.Bought == false);
+            var products = await _context.Product_Cart
+            .Where(pc => pc.CartID == cart.Id)
+            .Select(pc => pc.Product)
+            .ToListAsync();
+            return View(products);
         }
 
         // GET: Cart/Details/5
@@ -80,7 +85,7 @@ namespace Sirano.Controllers
                 var newCart = new Cart
                 {
                     UserID = user.Id,
-                    Size = size,
+                    Size = null,
                     Bought = false
                 };
                 await _context.Cart.AddAsync(newCart);
@@ -88,7 +93,7 @@ namespace Sirano.Controllers
                 var newProductCart = new Product_Cart
                 {
                     CartID = newCart.Id,
-                    Size = null,
+                    Size = size,
                     ProductID = id
                 };
                 await _context.Product_Cart.AddAsync(newProductCart);
@@ -99,7 +104,7 @@ namespace Sirano.Controllers
                 var newProductCart = new Product_Cart
                 {
                     CartID = cart.Id,
-                    Size = null,
+                    Size = size,
                     ProductID = id
                 };
                 await _context.Product_Cart.AddAsync(newProductCart);
