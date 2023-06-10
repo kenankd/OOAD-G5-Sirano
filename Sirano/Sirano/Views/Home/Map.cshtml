@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Map";
 }
-<!DOCTYPE html>
+
 
 <style>
     .dugmic {
@@ -20,16 +20,160 @@
         flex-grow: 1;
     }
 </style>
-<html>
-<body>
     <div class="container">
         <form action="/Home">
             <button type="submit" class="dugmic">SIRANO</button>
         </form>
     </div>
 
-    <div style="margin-left:200px">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2876.8785894120842!2d18.419190676125726!3d43.85834507109312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4758c8c5618685ed%3A0xed9229c1037ad76a!2sSirano!5e0!3m2!1sbs!2sba!4v1685623378249!5m2!1sbs!2sba" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div style="margin-top: 2%; margin-bottom: 2% ">
+        <div id="myMap"
+             style="position:relative;width:1100px;height:550px; margin-left:20px;"></div>
     </div>
-</body>
-</html>
+
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+
+<script type='text/javascript'>
+    function GetMap() {
+        var map = new Microsoft.Maps.Map('#myMap', {
+            credentials: 'Akb5vJt0fBD0ePX_Np5KBiDTX1693LC-SnUU5C0LiYjbulZGgKd29X5BbiFqY5nG',
+            center: new Microsoft.Maps.Location(43.8563, 18.4131),
+            mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+            zoom: 10
+        });
+
+        infobox = new Microsoft.Maps.Infobox(map.getCenter(), {
+            visible: false
+        });
+
+        infobox.setMap(map);
+
+        
+
+        var sirano = new Microsoft.Maps.Location(43.85845337613034, 18.421765596913584);
+        var scc = new Microsoft.Maps.Location(43.85550024503063, 18.408050523893746);
+        var hrasnica = new Microsoft.Maps.Location(43.79743985518899, 18.311820758044114);
+        var bojnik = new Microsoft.Maps.Location(43.88012387910122, 18.26929604396326);
+        var ciglane = new Microsoft.Maps.Location(43.867333069591034, 18.41072743924081);
+        var otoka = new Microsoft.Maps.Location(43.8482660806474, 18.367555686448537);
+        var aneks = new Microsoft.Maps.Location(43.842143726204725, 18.37093519864013);
+        var bihac = new Microsoft.Maps.Location(44.81137335998627, 15.868521493673024);
+        var bl = new Microsoft.Maps.Location(44.77100740981597, 17.194834070104875);
+        var zenica = new Microsoft.Maps.Location(44.20332688346574, 17.911331262301506);
+        var mostar = new Microsoft.Maps.Location(43.343186327955266, 17.80853946051036);
+        var zavidovici = new Microsoft.Maps.Location(44.443770489731435, 18.145092171807743);
+
+        var pin1 = new Microsoft.Maps.Pushpin(sirano);
+        var pin2 = new Microsoft.Maps.Pushpin(scc);
+        var pin3 = new Microsoft.Maps.Pushpin(hrasnica);
+        var pin4 = new Microsoft.Maps.Pushpin(bojnik);
+        var pin5 = new Microsoft.Maps.Pushpin(ciglane);
+        var pin6 = new Microsoft.Maps.Pushpin(otoka);
+        var pin7 = new Microsoft.Maps.Pushpin(aneks);
+        var pin8 = new Microsoft.Maps.Pushpin(bihac);
+        var pin9 = new Microsoft.Maps.Pushpin(bl);
+        var pin10 = new Microsoft.Maps.Pushpin(zenica);
+        var pin11 = new Microsoft.Maps.Pushpin(mostar);
+        var pin12 = new Microsoft.Maps.Pushpin(zavidovici);
+
+        pin1.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Stari Grad, Sarajevo'
+        };
+
+        pin2.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Sarajevo City Centar'
+        };
+
+        pin3.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Hrasnica, Sarajevo'
+        };
+
+        pin4.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Bojnik, Sarajevo'
+        };
+
+        pin5.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Ciglane, Sarajevo'
+        };
+
+        pin6.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Otoka, Sarajevo'
+        };
+
+        pin7.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Aneks, Sarajevo'
+        };
+
+        pin8.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Bihać, Bosnia and Herzegovina'
+        };
+
+        pin9.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Banja Luka, Bosnia and Herzegovina'
+        };
+
+        pin10.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Zenica, Bosnia and Herzegovina'
+        };
+
+        pin11.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Mostar, Bosnia and Herzegovina'
+        };
+
+        pin12.metadata = {
+            title: 'Boutique Sirano',
+            description: 'Zavidovići, Bosnia and Herzegovina'
+        };
+
+
+
+        Microsoft.Maps.Events.addHandler(pin1, 'click', pushpinClicked);
+        Microsoft.Maps.Events.addHandler(pin2, 'click', pushpinClicked);
+        Microsoft.Maps.Events.addHandler(pin3, 'click', pushpinClicked);
+        Microsoft.Maps.Events.addHandler(pin4, 'click', pushpinClicked);
+        Microsoft.Maps.Events.addHandler(pin5, 'click', pushpinClicked);
+        Microsoft.Maps.Events.addHandler(pin6, 'click', pushpinClicked);
+        Microsoft.Maps.Events.addHandler(pin7, 'click', pushpinClicked);
+        Microsoft.Maps.Events.addHandler(pin8, 'click', pushpinClicked);
+        Microsoft.Maps.Events.addHandler(pin9, 'click', pushpinClicked);
+        Microsoft.Maps.Events.addHandler(pin10, 'click', pushpinClicked);
+        Microsoft.Maps.Events.addHandler(pin11, 'click', pushpinClicked);
+        Microsoft.Maps.Events.addHandler(pin12, 'click', pushpinClicked);
+
+        map.entities.push(pin1);
+        map.entities.push(pin2);
+        map.entities.push(pin3);
+        map.entities.push(pin4);
+        map.entities.push(pin5);
+        map.entities.push(pin6);
+        map.entities.push(pin7);
+        map.entities.push(pin8);
+        map.entities.push(pin9);
+        map.entities.push(pin10);
+        map.entities.push(pin11);
+        map.entities.push(pin12);
+
+    }
+
+    function pushpinClicked(e) {
+        if (e.target.metadata) {
+            infobox.setOptions({
+                location: e.target.getLocation(),
+                title: e.target.metadata.title,
+                description: e.target.metadata.description,
+                visible: true
+            });
+        }
+    }
+</script>
