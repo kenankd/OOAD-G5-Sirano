@@ -70,6 +70,44 @@ namespace Sirano.Controllers
             ViewData["UserID"] = new SelectList(_context.RegisteredUser, "Id", "Id", cart.UserID);
             return View(cart);
         }
+        [HttpPost]
+        public async Task<IActionResult> AddToCart(int id, string size)
+        {
+            var user = await _context.RegisteredUser.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+            var cart = await _context.Cart.FirstOrDefaultAsync(c => c.UserID == user.Id && c.Bought == false);
+            if (cart == null)
+            {
+                var newCart = new Cart
+                {
+                    UserID = user.Id,
+                    Size = size,
+                    Bought = false
+                };
+                await _context.Cart.AddAsync(newCart);
+                await _context.SaveChangesAsync();
+                var newProductCart = new Product_Cart
+                {
+                    CartID = newCart.Id,
+                    Size = null,
+                    ProductID = id
+                };
+                await _context.Product_Cart.AddAsync(newProductCart);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var newProductCart = new Product_Cart
+                {
+                    CartID = cart.Id,
+                    Size = null,
+                    ProductID = id
+                };
+                await _context.Product_Cart.AddAsync(newProductCart);
+                await _context.SaveChangesAsync();
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", "Product", new { id = id });
+        }
 
         // GET: Cart/Edit/5
         public async Task<IActionResult> Edit(int? id)

@@ -102,20 +102,23 @@
             <div>
                 <p style="margin-left:83px; font-family: IBM Plex Sans; font-size: 17px; font-weight:100; margin-top:53px; margin-left:180px; color:rgba(20,20,20,0.6);">Size</p>
             </div>
-            <div class="dropdown" style="margin-top:48px; margin-left:10px">
-                <select class="dropbtn" name="SIZE">
-                    <option value="XS" selected>XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                </select>
+            <div>
+                <div class="dropdown" style="margin-top:48px; margin-left:10px">
+                    <form action="/Cart/AddToCart" method="POST">
+                        <select class="dropbtn" name="size">
+                            <option value="XS" selected>XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                        </select>
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <button type="submit" class="button5" style="margin-top:20px">ADD TO CART</button>
+                    </form>
+                </div>
             </div>
+            <div class="horizontalLine" style="margin-left:70px;"></div>
+
         </div>
-        <div class="horizontalLine" style="margin-left:70px;"></div>
-        <form action="/Product/Create">
-            <button type="submit" class="button5" style=" margin-left:70px; margin-top:20px">ADD TO CART</button>
-        </form>
     </div>
 </div>
-
