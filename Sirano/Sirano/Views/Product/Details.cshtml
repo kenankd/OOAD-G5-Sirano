@@ -96,24 +96,31 @@
         <p style="margin-left:70px; font-family: IBM Plex Sans; font-size: 28px; text-transform: uppercase; font-weight:100; margin-top: 80px; margin-bottom:25px">@Model.Name</p>
         <p style="margin-left:70px; font-family: PoppIBM Plex Sansins; color:rgba(20,20,20,0.6); font-size: 15px">@Model.Summary</p>
         <div class="container">
+            
             <div>
-                <p style="margin-left:57px; font-family: IBM Plex Sans; font-size: 25px; font-weight:100; margin-top:45px; margin-right:23px; color: rgba(20,20,20,0.7);">$@Model.Price</p>
-            </div>
-            <div>
-                <p style="margin-left:83px; font-family: IBM Plex Sans; font-size: 17px; font-weight:100; margin-top:53px; margin-left:180px; color:rgba(20,20,20,0.6);">Size</p>
-            </div>
-            <div>
-                <div class="dropdown" style="margin-top:48px; margin-left:10px">
-                    <form action="/Cart/AddToCart" method="POST">
-                        <select class="dropbtn" name="size">
-                            <option value="XS" selected>XS</option>
-                            <option value="S">S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
-                        </select>
+                <div class="dropdown" style="margin-top:48px;">
+                    <form action="/Cart/AddToCart" method="POST"> 
+                        <div style="display:flex">
+                            <div>
+                                <p style="margin-left:57px; font-family: IBM Plex Sans; font-size: 25px; font-weight:100; margin-top:45px; margin-right:23px; color: rgba(20,20,20,0.7);">$@Model.Price</p>
+                            </div>
+                            <div>
+                                <p style="margin-left:83px; font-family: IBM Plex Sans; font-size: 17px; font-weight:100; margin-top:53px; margin-left:180px; color:rgba(20,20,20,0.6);">Size</p>
+                            </div>
+                            <div>
+                                <select class="dropbtn" name="size" style="margin-top:50px;">
+                                    <option value="XS" selected>XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
+                            </div>
+                        </div>
                         <input type="hidden" name="id" value="@Model.Id" />
-                        <button type="submit" class="button5" style="margin-top:20px">ADD TO CART</button>
+                        <div>
+                            <button type="submit" class="button5" style="margin-top:20px; margin-left:53px">ADD TO CART</button>
+                        </div>
                     </form>
                 </div>
             </div>
