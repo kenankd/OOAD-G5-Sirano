@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<partial name="_Header" />
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .payment-methods-container {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .payment-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+            .payment-method input[type="radio"] {
+                margin-bottom: 10px;
+            }
+
+            .payment-method label {
+                font-family: IBM Plex Sans;
+                font-size: 17px;
+                font-weight: 100;
+                color: rgba(20, 20, 20, 0.7);
+                margin-top: 10px;
+            }
+
+            .payment-method img {
+                width: 50px;
+                height: auto;
+            }
+
+        .button5 {
+            background-color: black;
+            border-color: black;
+            border-radius: 1px;
+            color: white;
+            padding: 7px 70px;
+            text-align: center;
+            font-weight: 100;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px 2px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .future-date {
+            position: fixed;
+            bottom: 110px;
+            left: 220px;
+            font-size: 19px;
+            color: rgba(20, 20, 20, 1.2);
+            font-family: IBM Plex Sans;
+        }
+
+        .payment-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 180px;
+        }
+    </style>
+    <script>
+        function selectPaymentMethod(methodId) {
+            const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+            paymentMethods.forEach(method => {
+                if (method.id === methodId) {
+                    method.checked = true;
+                } else {
+                    method.checked = false;
+                }
+            });
+        }
+
+        window.onload = function () {
+            var today = new Date();
+            var futureDate = new Date(today.getTime() + (7 * 24 * 60 * 60 * 1000)); // Dodajemo 7 dana (7 * 24 * 60 * 60 * 1000) u milisekundama
+            var options = { weekday: 'long', day: '2-digit', month: 'long' };
+            var dateString = futureDate.toLocaleDateString('en-US', options);
+            var dateElement = document.querySelector(".future-date");
+            dateElement.innerHTML = "DELIVERY DATE: " + dateString;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <p style="font-family: IBM Plex Sans; font-size: 20px; font-weight: 100; color: rgba(20, 20, 20, 1.2); margin-top: 10px">HOW WOULD YOU LIKE TO PAY FOR YOUR ORDER?</p>
+    </div>
+    <div class="payment-methods-container" style="margin-top: 80px">
+        <div class="payment-method" style="margin-right: 40px">
+            <form id="account" method="post" style="border: 2px solid black; padding: 30px 60px; display: flex; flex-direction: column; align-items: center;">
+                <img src="/images/pouzece.png" alt="Cash on delivery">
+                <label for="cash-on-delivery">
+                    <input type="radio" id="cash-on-delivery" name="payment-method" value="cash-on-delivery" onclick="selectPaymentMethod('cash-on-delivery')">
+                    PAY ON DELIVERY
+                </label>
+            </form>
+        </div>
+        <div class="payment-method" style="margin-right: 40px">
+            <form id="account" method="post" style="border: 2px solid black; padding: 30px 75px; display: flex; flex-direction: column; align-items: center;">
+                <img src="/images/card.png" alt="Credit card">
+                <label for="credit-card">
+                    <input type="radio" id="credit-card" name="payment-method" value="credit-card" onclick="selectPaymentMethod('credit-card')">
+                    CREDIT CARD
+                </label>
+            </form>
+        </div>
+        
+    </div>
+
+    <div class="payment-container">
+        <div class="future-date"></div>
+
+        <div>
+            <form action="/Order/Create">
+                <button type="submit" class="button5" style="margin-left: 870px;">CONTINUE</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

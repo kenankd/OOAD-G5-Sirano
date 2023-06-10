@@ -376,3 +376,8 @@ C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\FootwearDelete.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\FootwearDetails.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Admin\FootwearEdit.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Order\Create.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Order\Delete.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Order\Details.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Order\Edit.cshtml.g.cs
+C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Order\Index.cshtml.g.cs

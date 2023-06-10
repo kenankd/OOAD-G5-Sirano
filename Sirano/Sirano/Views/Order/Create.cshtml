@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<partial name="_Header" />
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .credit-card-details-container h2 {
+            text-align: center;
+        }
+
+        .credit-card-details-container input[type="text"],
+        .credit-card-details-container button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .natpis {
+            display: flex;
+        }
+
+        .button5 {
+            background-color: black;
+            border-color: black;
+            border-radius: 1px;
+            color: white;
+            padding: 7px 70px;
+            text-align: center;
+            font-weight: 100;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px 2px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p style="font-family: IBM Plex Sans; font-size: 20px; font-weight: 100; color: rgba(20, 20, 20, 1.2); margin-top: 10px">ENTER YOUR CARD DETAILS</p>
+    </div>
+    <div class="credit-card-details-container">
+        <form onsubmit="handleCreditCardDetailsSubmit(event)">
+            <div style="margin-top:70px; color: rgba(20, 20, 20, 0.6);">
+                <input type="text" id="credit-card-number" placeholder="Card Number" required style="width: 45%; display: inline-block; border-width: 0px 0px 1px 0px">
+                <input type="text" id="expiration-month" placeholder="Expiration Month (MM)" required style="width: 20%; display: inline-block;  margin-left: 60px; border-width: 0px 0px 1px 0px">
+                <input type="text" id="expiration-year" placeholder="Expiration Year (YYYY)" style="width: 20%; display: inline-block; margin-left: 40px; border-width: 0px 0px 1px 0px" required>
+            </div>
+            <div style="margin-top:40px; color: rgba(20, 20, 20, 0.6);">
+                <input type="text" id="card-holder" placeholder="Card Holder" required style="width: 45%; display: inline-block; border-width: 0px 0px 1px 0px">
+                <input type="text" id="cvv2" placeholder="CVV2 Security Code" required style="width: 44%; display: inline-block;  margin-left: 60px;border-width: 0px 0px 1px 0px">
+            </div>
+            <div style="margin-top:200px; margin-left:840px; margin-right:60px">
+                <form action="/Product/Create">
+                    <button type="submit" class="button5">CONTINUE</button>
+                </form>
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+
+        function handleCreditCardDetailsSubmit(event) {
+            event.preventDefault();
+
+            const creditCardNumber = document.getElementById('credit-card-number').value;
+            const expirationMonth = document.getElementById('expiration-month').value;
+            const expirationYear = document.getElementById('expiration-year').value;
+            const cardHolder = document.getElementById('card-holder').value;
+            const cvv2 = document.getElementById('cvv2').value;
+
+            const successMessage = document.createElement('div');
+            successMessage.innerHTML = 'Your orders have been successfully received. Thank you for shopping with us!';
+            successMessage.style.backgroundColor = '#4CAF50';
+            successMessage.style.color = 'white';
+            successMessage.style.padding = '10px';
+            successMessage.style.marginTop = '20px';
+            successMessage.style.textAlign = 'center';
+            document.body.appendChild(successMessage);
+        }
+    </script>
+</body>
+</html>
