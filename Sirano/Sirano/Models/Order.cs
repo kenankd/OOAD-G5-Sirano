@@ -1,8 +1,5 @@
-﻿using Microsoft.VisualBasic;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Net.Http.Headers;
 
 namespace Sirano.Models
 {
@@ -17,7 +14,13 @@ namespace Sirano.Models
         [ForeignKey("Cart")]
         public int CartID { get; set; }
         public Cart Cart { get; set; }
-        //public object Cart { get; internal set; }
+
+        public string CardNumber { get; set; }
+        public int ExpirationMonth { get; set; }
+        public int ExpirationYear { get; set; }
+        public string Cardholder { get; set; }
+        public int CVV { get; set; }
+
 
         public Order() { }
     }
