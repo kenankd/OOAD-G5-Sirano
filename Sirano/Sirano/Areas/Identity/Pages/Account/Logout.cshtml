@@ -1,0 +1,22 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Log out";
+}
+
+<div style="margin-top: 50px; margin-bottom: 30px; margin-left:65px">
+    <h style="font-family: Playfair Display; font-weight:600; font-size: 45px">Log out</h>
+</div>
+
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Home", "Index")" method="post">
+            <button type="submit" class="nav-link btn btn-link text-dark" style="font-family: Poppins; font-size: 20px; margin-left:50px; margin-bottom:20px">Click here to Logout</button>
+            </form>
+        }
+        else
+        {
+        <p style="font-family: Poppins; font-size: 20px; margin-left:65px; margin-bottom:20px">You have successfully logged out of the application.</p>
+        }
+    }
