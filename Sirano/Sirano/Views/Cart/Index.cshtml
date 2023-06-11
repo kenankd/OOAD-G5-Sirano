@@ -1,122 +1,85 @@
 ﻿@model IEnumerable<Sirano.Models.Product>
-
-<!DOCTYPE html>
+@{
+    ViewData["Title"] = "Cart";
+}
 <partial name="_Header" />
-<html>
-<head>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        align-items: center;
+        max-width: 1150px;
+        min-height: 340px;
+        min-width: 1000px;
+    }
 
-        .product-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .product-card {
+        width: 170px;
+        height: 270px;
+        justify-content: right;
+        align-items: center;
+        margin: 20px;
+    }
 
-        .product-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 10px;
-        }
+    .product-image {
+        max-width: 100%;
+        max-height: 100%;
+    }
 
-            .product-card img {
-                margin-bottom: 10px;
-            }
+    .button5 {
+        background-color: WHITE;
+        border-color: black;
+        border-radius: 1px;
+        color: BLACK;
+        padding: 7px 70px;
+        text-align: center;
+        font-weight: 100;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 2px 2px;
+        cursor: pointer;
+        white-space: nowrap;
+    }
 
-        .product-info {
-            text-align: center;
-        }
+    .button5:disabled {
+        background-color: #cccccc;
+        color: #666666;
+        cursor: not-allowed;
+    }
+</style>
 
-            .product-info p {
-                margin: 5px;
-            }
-
-        .total-price {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .button5 {
-            background-color: WHITE;
-            border-color: black;
-            border-radius: 1px;
-            color: BLACK;
-            padding: 7px 70px;
-            text-align: center;
-            font-weight: 100;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-            margin: 2px 2px;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-            .button5:disabled {
-                background-color: #cccccc;
-                color: #666666;
-                cursor: not-allowed;
-            }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-            .container img {
-                margin: 20px;
-            }
-
-        .natpis {
-            display: flex;
-        }
-
-        .product-image {
-            width: 200px;
-            height: 300px;
-            object-fit: cover;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="product-container">
-            @foreach (var product in Model)
+<div class="container">
+    @foreach (var product in Model)
+    {
+        <div class="product-card">
+            <div>
+                <img src="@product.Image" alt="Product Image" class="product-image">
+            </div>
+            <div style="text-align: center;">
+                <p>@product.Name</p>
+            </div>
+            <div style="text-align: center;">
+                <p>Price: $@product.Price</p>
+            </div>
+        </div>
+    }
+ </div>
+<div style="margin-top:150px;display: flex;">
+    <div>
+        <p style="font-family: IBM Plex Sans; font-size: 17px; font-weight: 100; margin-top:8px; margin-left: 730px; color: rgba(20, 20, 20, 0.7);">TOTAL: $@Model.Sum(p => Convert.ToDecimal(p.Price)).ToString("F2")</p>
+    </div>
+    <div>
+        <form action="/Order/Index">
+            @if (Model.Any())
             {
-                <div class="product-card">
-                    <img src="@product.Image" alt="Product Image" class="product-image">
-                    <div class="product-info">
-                        <p>@product.Name</p>
-                        <p>Price: $@product.Price</p>
-                    </div>
-                </div>
+                <button type="submit" class="button5" style="margin-left: 15px; margin-bottom: 50px;">CONTINUE</button>
             }
-        </div>
+            else
+            {
+                <button type="submit" class="button5" style="margin-left: 15px; margin-bottom: 50px;" disabled>CONTINUE</button>
+            }
+        </form>
     </div>
-    <div class="natpis" style="margin-top:50px">
-        <div>
-            <p style="font-family: IBM Plex Sans; font-size: 17px; font-weight: 100; margin-top:8px; margin-left: 570px; color: rgba(20, 20, 20, 0.7);">TOTAL: $@Model.Sum(p => Convert.ToDecimal(p.Price)).ToString("F2")</p>
-        </div>
-        <div>
-            <form action="/Order/Index">
-                @if (Model.Any())
-                {
-                    <button type="submit" class="button5" style="margin-left: 15px; margin-bottom: 50px;">CONTINUE</button>
-                }
-                else
-                {
-                    <button type="submit" class="button5" style="margin-left: 15px; margin-bottom: 50px;" disabled>CONTINUE</button>
-                }
-            </form>
-        </div>
-    </div>
-</body>
-</html>
+</div>
