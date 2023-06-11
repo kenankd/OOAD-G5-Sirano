@@ -1,48 +1,48 @@
-﻿@model Sirano.Models.Order
-
+﻿@model IEnumerable<Sirano.Models.Product>
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Orders";
 }
+<partial name="_Header" />
 
-<h1>Details</h1>
+<style>
 
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OrderDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OrderDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DeliveryDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DeliveryDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PaymentMethod)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PaymentMethod)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cart)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cart.Id)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+            align-items: center;
+            max-width: 1150px;
+            min-height: 340px;
+            min-width: 1000px;
+        }
+
+        .product-card {
+            width: 170px;
+            height: 270px;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            margin: 20px;
+        }
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+
+
+        
+    </style>
+
+    <div style="margin-top: 20px;">
+            <p style="font-family: IBM Plex Sans; font-size: 17px; font-weight: 100; color: rgba(20, 20, 20, 1);">You can leave a review by clicking on the wanted product!</p>
+       
+    </div>
+    <div class="container">
+            @foreach (var product in Model)
+            {
+                <div class="product-card">
+                <img src="@product.Image" alt="Product Image" class="product-image" style="margin-left:100px">
+                </div>
+            }
+    </div>

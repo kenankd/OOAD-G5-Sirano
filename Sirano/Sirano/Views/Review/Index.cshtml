@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<partial name="_Header" />
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .button5 {
+            background-color: black;
+            border-color: black;
+            border-radius: 1px;
+            color: white;
+            padding: 7px 70px;
+            text-align: center;
+            font-weight: 100;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px 2px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .comment-container {
+            position: fixed;
+            margin-left: 50px;
+            ma
+        }
+
+        .review-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .product-image {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex: 1;
+        }
+
+            .product-image img {
+                max-width: 100%;
+                height: auto;
+            }
+
+        .stars {
+            display: inline-block;
+        }
+
+            .stars input[type="radio"] {
+                display: none;
+            }
+
+            .stars label {
+                float: right;
+                color: #bbb;
+                font-size: 40px;
+                margin-right: 5px;
+                transition: color 0.3s;
+                cursor: pointer;
+            }
+
+                .stars label:hover,
+                .stars input[type="radio"]:checked ~ label {
+                    color: #ca7b80;
+                }
+    </style>
+    <script>
+        function handleRating(rating) {
+            console.log('Selected rating:', rating);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <p style="font-family: IBM Plex Sans; font-size: 20px; font-weight: 100; color: rgba(20, 20, 20, 1.2); margin-top: 52px">SHARE YOUR OPINION ABOUT OUR PRODUCT</p>
+            <form action="/submit-review" method="POST">
+                <label for="comment" style="font-family: IBM Plex Sans; color: rgba(20,20,20, 1.2); margin-top:50px">COMMENT:</label>
+                <div>
+                    <textarea id="comment" name="comment" rows="4" cols="51" required></textarea>
+                </div>
+            </form>
+            <div class="stars" style="margin-top:20px">
+                <input type="radio" id="star5" name="rating" value="5" />
+                <label for="star5">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4" />
+                <label for="star4">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3" />
+                <label for="star3">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2" />
+                <label for="star2">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1" />
+                <label for="star1">&#9733;</label>
+            </div>
+            <div>
+                <button id="reviewButton" type="submit" class="button5" style="margin-top:85px">LEAVE A REVIEW</button>
+            </div>
+
+        </div>
+        <div style="margin-left:300px; margin-top:64px">
+            <img src="~/images/haljina10.jpg" alt="Product Image" width="300" height="450">
+        </div>
+    </div>
+</body>
+</html>

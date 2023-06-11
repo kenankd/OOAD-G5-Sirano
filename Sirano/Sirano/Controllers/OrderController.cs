@@ -27,22 +27,14 @@ namespace Sirano.Controllers
         }
 
         // GET: Order/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Order
-                .Include(o => o.Cart)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            return View(order);
+            var user = await _context.RegisteredUser.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+            var products = await _context.Product_Cart
+            .Where(pc => pc.Cart.Bought == true && pc.Cart.UserID == user.Id)
+            .Select(pc => pc.Product)
+            .ToListAsync();
+            return View(products);
         }
 
         [HttpPost]
