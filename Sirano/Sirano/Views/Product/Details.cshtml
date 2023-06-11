@@ -1,4 +1,4 @@
-﻿@model Sirano.Models.Product
+﻿@model Sirano.Models.ProductReviewViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -89,35 +89,63 @@
 <partial name="_Header" />
 <div class="container" style="margin-top:25px">
     <div class="div4">
-        <img src="@Url.Content(Model.Image)" alt="@Model.Name" style="width:400px; height: 550px; margin-left:90px">
+        <img src="@Url.Content(Model.Product.Image)" alt="@Model.Product.Name" style="width:400px; height: 550px; margin-left:90px">
     </div>
     <div class="verticalLine"></div>
     <div style=" max-width:472px">
-        <p style="margin-left:70px; font-family: IBM Plex Sans; font-size: 28px; text-transform: uppercase; font-weight:100; margin-top: 80px; margin-bottom:25px">@Model.Name</p>
-        <p style="margin-left:70px; font-family: PoppIBM Plex Sansins; color:rgba(20,20,20,0.6); font-size: 15px">@Model.Summary</p>
+        <p style="margin-left:70px; font-family: IBM Plex Sans; font-size: 28px; text-transform: uppercase; font-weight:100; margin-top: 80px; margin-bottom:25px">@Model.Product.Name</p>
+        <p style="margin-left:70px; font-family: PoppIBM Plex Sansins; color:rgba(20,20,20,0.6); font-size: 15px">@Model.Product.Summary</p>
+        <div style="margin-left:70px; font-family: IBM Plex Sans; font-size: 15px; color:rgba(20,20,20,0.6); margin-top:150px;">
+            Average Rating:
+            @if (Model.Reviews.Any())
+            {
+                @Model.Reviews.Average(r => r.Rating).ToString("0.0")
+            }
+            else
+            {
+                <text>Not rated yet</text>
+            }
+        </div>
         <div class="container">
-            
+
             <div>
-                <div class="dropdown" style="margin-top:48px;">
-                    <form action="/Cart/AddToCart" method="POST"> 
+                <div class="dropdown" style="margin-top:0px;">
+                    <form action="/Cart/AddToCart" method="POST">
                         <div style="display:flex">
                             <div>
-                                <p style="margin-left:57px; font-family: IBM Plex Sans; font-size: 25px; font-weight:100; margin-top:45px; margin-right:23px; color: rgba(20,20,20,0.7);">$@Model.Price</p>
+                                <p style="margin-left:57px; font-family: IBM Plex Sans; font-size: 25px; font-weight:100; margin-top:15px; margin-right:23px; color: rgba(20,20,20,0.7);">$@Model.Product.Price</p>
                             </div>
                             <div>
-                                <p style="margin-left:83px; font-family: IBM Plex Sans; font-size: 17px; font-weight:100; margin-top:53px; margin-left:180px; color:rgba(20,20,20,0.6);">Size</p>
+                                <p style="margin-left:83px; font-family: IBM Plex Sans; font-size: 17px; font-weight:100; margin-top:23px; margin-left:180px; color:rgba(20,20,20,0.6);">Size</p>
                             </div>
                             <div>
-                                <select class="dropbtn" name="size" style="margin-top:50px;">
-                                    <option value="XS" selected>XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
+                                <select class="dropbtn" name="size" style="margin-top:20px; margin-left:5px">
+                                    @if (Model.Product is Sirano.Models.Footwear && Model.Product.Men == true)
+                                    {
+                                        for (int size = 38; size <= 48; size++)
+                                        {
+                                            <option value="@size">@size</option>
+                                        }
+                                    }
+                                    else if (Model.Product is Sirano.Models.Footwear && Model.Product.Men == false)
+                                    {
+                                        for (int size = 35; size <= 42; size++)
+                                        {
+                                            <option value="@size">@size</option>
+                                        }
+                                    }
+                                    else if (Model.Product is Sirano.Models.Clothing)
+                                    {
+                                        <option value="XS" selected>XS</option>
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                    }
                                 </select>
                             </div>
                         </div>
-                        <input type="hidden" name="id" value="@Model.Id" />
+                        <input type="hidden" name="id" value="@Model.Product.Id" />
                         <div>
                             <button type="submit" class="button5" style="margin-top:20px; margin-left:53px">ADD TO CART</button>
                         </div>

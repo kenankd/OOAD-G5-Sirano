@@ -48,6 +48,7 @@ namespace Sirano.Controllers
             }
             return View("Index", await filteredProducts.ToListAsync());
         }
+
         // GET: Product/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -55,15 +56,15 @@ namespace Sirano.Controllers
             {
                 return NotFound();
             }
-
             var product = await _context.Product
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            return View(product);
+            var reviews = await _context.Review
+            .Where(r => r.ProductID == id)
+            .ToListAsync();
+            ProductReviewViewModel viewModel = new ProductReviewViewModel();
+            viewModel.Product = product;
+            viewModel.Reviews = reviews;
+            return View(viewModel);
         }
 
 

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model Sirano.Models.Product
+<!DOCTYPE html>
 <partial name="_Header" />
 <html>
 <head>
@@ -88,32 +89,41 @@
     <div class="container">
         <div>
             <p style="font-family: IBM Plex Sans; font-size: 20px; font-weight: 100; color: rgba(20, 20, 20, 1.2); margin-top: 52px">SHARE YOUR OPINION ABOUT OUR PRODUCT</p>
-            <form action="/submit-review" method="POST">
+            <form action="/Review/CreateReview" method="POST" id="reviewForm">
+                <input type="hidden" name="id" value="@Model.Id" />
                 <label for="comment" style="font-family: IBM Plex Sans; color: rgba(20,20,20, 1.2); margin-top:50px">COMMENT:</label>
                 <div>
                     <textarea id="comment" name="comment" rows="4" cols="51" required></textarea>
                 </div>
+                <div class="stars" style="margin-top:20px">
+                    <input type="radio" id="star5" name="rating" value="5" />
+                    <label for="star5">&#9733;</label>
+                    <input type="radio" id="star4" name="rating" value="4" />
+                    <label for="star4">&#9733;</label>
+                    <input type="radio" id="star3" name="rating" value="3" />
+                    <label for="star3">&#9733;</label>
+                    <input type="radio" id="star2" name="rating" value="2" />
+                    <label for="star2">&#9733;</label>
+                    <input type="radio" id="star1" name="rating" value="1" />
+                    <label for="star1">&#9733;</label>
+                </div>
+                <div>
+                    <button id="reviewButton" type="submit" class="button5" style="margin-top:85px">LEAVE A REVIEW</button>
+                </div>
             </form>
-            <div class="stars" style="margin-top:20px">
-                <input type="radio" id="star5" name="rating" value="5" />
-                <label for="star5">&#9733;</label>
-                <input type="radio" id="star4" name="rating" value="4" />
-                <label for="star4">&#9733;</label>
-                <input type="radio" id="star3" name="rating" value="3" />
-                <label for="star3">&#9733;</label>
-                <input type="radio" id="star2" name="rating" value="2" />
-                <label for="star2">&#9733;</label>
-                <input type="radio" id="star1" name="rating" value="1" />
-                <label for="star1">&#9733;</label>
-            </div>
-            <div>
-                <button id="reviewButton" type="submit" class="button5" style="margin-top:85px">LEAVE A REVIEW</button>
-            </div>
-
         </div>
         <div style="margin-left:300px; margin-top:64px">
-            <img src="~/images/haljina10.jpg" alt="Product Image" width="300" height="450">
+            <img src=@Model.Image alt="Product Image" width="300" height="450">
         </div>
     </div>
+
+    <script>
+        document.getElementById('reviewButton').addEventListener('click', function (event) {
+            let form = document.getElementById('reviewForm');
+            let comment = form.comment.value;
+            let rating = document.querySelector('input[name="rating"]:checked').value;
+            console.log('Comment:', comment, 'Rating:', rating);
+        });
+    </script>
 </body>
 </html>
