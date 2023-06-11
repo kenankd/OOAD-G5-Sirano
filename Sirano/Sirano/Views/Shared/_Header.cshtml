@@ -45,7 +45,7 @@
     <form action="/Home">
         <button type="submit" class="dugmic">SIRANO</button>
     </form>
-    <div style="margin-left:800px;"></div>
+    <div style="margin-left:770px;"></div>
 
     @if (!User.Identity.IsAuthenticated)
     {
@@ -56,7 +56,10 @@
     else
     {
         <form action="/Identity/Account/Login">
-            <button type="submit" class="button3" style="margin-top:15px">LOG OUT</button>
+            <button type="submit" class="button3" style="margin-top:15px;">LOG OUT</button>
+        </form>
+        <form action="/Order">
+            <button type="submit" class="button3" style="margin-top:15px; margin-left:10px; margin-right:10px">ORDERS</button>
         </form>
         <a href="/Cart/Index">
             <img src="@Url.Content("~/images/korpa.png")" width="20" height="20" style="margin-top:15px;">
