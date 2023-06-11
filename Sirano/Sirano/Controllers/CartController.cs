@@ -44,7 +44,16 @@ namespace Sirano.Controllers
             .ToListAsync();
             return View(products);
         }
-        
+        public async Task<IActionResult> RemoveFromCart(int id)
+        {
+            var user = await _context.RegisteredUser.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+            var cart = await _context.Cart.FirstOrDefaultAsync(c => c.UserID == user.Id && c.Bought == false);
+            var productCartItem = await _context.Product_Cart.FirstOrDefaultAsync(pc => pc.ProductID == id && pc.CartID == cart.Id);
+            _context.Product_Cart.Remove(productCartItem);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddToCart(int id, string size)
         {

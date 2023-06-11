@@ -43,6 +43,21 @@
         white-space: nowrap;
     }
 
+    .button6 {
+        background-color: WHITE;
+        border-color: black;
+        border-radius: 1px;
+        color: BLACK;
+        padding: 7px 40px;
+        text-align: center;
+        font-weight: 100;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 2px 2px;
+        cursor: pointer;
+        white-space: nowrap;
+    }
     .button5:disabled {
         background-color: #cccccc;
         color: #666666;
@@ -63,6 +78,10 @@
             <div style="text-align: center;">
                 <p>Price: $@product.Price</p>
             </div>
+            <form action="/Cart/RemoveFromCart" method="post">
+                <input type="hidden" name="id" value="@product.Id" />
+                <button type="submit" class="button6" style="margin-left:20px">REMOVE</button>
+            </form>
         </div>
     }
  </div>
