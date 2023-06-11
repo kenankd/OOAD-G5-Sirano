@@ -349,7 +349,6 @@ C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Product\Details.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
-C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Product\ProductChoose.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Shared\_Header.cshtml.g.cs
 C:\Users\29\Documents\GitHub\OOAD-G5-Sirano\Sirano\Sirano\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs

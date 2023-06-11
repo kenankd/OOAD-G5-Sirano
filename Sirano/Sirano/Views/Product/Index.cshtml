@@ -34,7 +34,7 @@
 </style>
 
 
-<form method="get" action="/Product/Index" style="margin-left:85px; font-family:Playfair Display; font-size:15px; font-weight:100">
+<form method="get" action="/Product/Index1" style="margin-left:85px; font-family:Playfair Display; font-size:15px; font-weight:100">
     <select name="productType" onchange="this.form.submit()">
         <option value="all">ALL</option>
         <option value="footwear">FOOTWEAR</option>
@@ -46,14 +46,22 @@
 <div class="container">
     @foreach (var product in Model)
     {
-            string actionLink = Url.Action("Details", "Product", new { id = product.Id });
+        string actionLink = Url.Action("Details", "Product", new { id = product.Id });
 
-            <a href="@actionLink">
-                <div class="product-card">
-                    <img src="@Url.Content(product.Image)" alt="@product.Name" class="product-image" style="margin-left:100px">
-                </div>
-            </a>
+        <a href="@actionLink">
+            <div class="product-card">
+                <img src="@Url.Content(product.Image)" alt="@product.Name" class="product-image" style="margin-left:100px">
+            </div>
+        </a>
     }
 
-
 </div>
+<script>
+    $(document).ready(function () {
+        $('select[name="productType"]').on('click', 'option', function () {
+            if ($(this).val() === 'all') {
+                $(this).closest('form').submit();
+            }
+        });
+    });
+</script>
