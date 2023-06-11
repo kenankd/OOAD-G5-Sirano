@@ -15,11 +15,11 @@ namespace Sirano.Models
         public int CartID { get; set; }
         public Cart Cart { get; set; }
 
-        public string CardNumber { get; set; }
-        public int ExpirationMonth { get; set; }
-        public int ExpirationYear { get; set; }
-        public string Cardholder { get; set; }
-        public int CVV { get; set; }
+        public string? CardNumber { get; set; }
+        public int? ExpirationMonth { get; set; }
+        public int? ExpirationYear { get; set; }
+        public string? Cardholder { get; set; }
+        public int? CVV { get; set; }
 
 
         public Order() { }

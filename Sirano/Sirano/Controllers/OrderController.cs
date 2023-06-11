@@ -61,10 +61,10 @@ namespace Sirano.Controllers
                     PaymentMethod = (PaymentMethod)3,
                     CartID = cart.Id,
                     CardNumber = null,
-                    ExpirationMonth = 0, //treba migrirat da moze biti null
-                    ExpirationYear = 0,   //treba migrirat da moze biti null
+                    ExpirationMonth = null,
+                    ExpirationYear = null,
                     Cardholder = null,
-                    CVV = 0 //treba migrirat da moze biti null
+                    CVV = null
                 };
                 await _context.Order.AddAsync(newOrder);
                 int changes = await _context.SaveChangesAsync();
