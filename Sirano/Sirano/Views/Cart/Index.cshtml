@@ -59,6 +59,12 @@
             white-space: nowrap;
         }
 
+            .button5:disabled {
+                background-color: #cccccc;
+                color: #666666;
+                cursor: not-allowed;
+            }
+
         .container {
             display: flex;
             justify-content: center;
@@ -100,8 +106,15 @@
             <p style="font-family: IBM Plex Sans; font-size: 17px; font-weight: 100; margin-top:8px; margin-left: 570px; color: rgba(20, 20, 20, 0.7);">TOTAL: $@Model.Sum(p => Convert.ToDecimal(p.Price)).ToString("F2")</p>
         </div>
         <div>
-            <form action="/Order">
-                <button type="submit" class="button5" style="margin-left: 15px; margin-bottom: 50px;">CONTINUE</button>
+            <form action="/Order/Index">
+                @if (Model.Any())
+                {
+                    <button type="submit" class="button5" style="margin-left: 15px; margin-bottom: 50px;">CONTINUE</button>
+                }
+                else
+                {
+                    <button type="submit" class="button5" style="margin-left: 15px; margin-bottom: 50px;" disabled>CONTINUE</button>
+                }
             </form>
         </div>
     </div>

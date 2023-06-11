@@ -26,6 +26,18 @@ namespace Sirano.Controllers
         {
             var user = await _context.RegisteredUser.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
             var cart = await _context.Cart.FirstOrDefaultAsync(c => c.UserID == user.Id && c.Bought == false);
+            if (cart == null)
+            {
+                var newCart = new Cart
+                {
+                    UserID = user.Id,
+                    Size = null,
+                    Bought = false
+                };
+                await _context.Cart.AddAsync(newCart);
+                await _context.SaveChangesAsync();
+                cart = newCart;
+            }
             var products = await _context.Product_Cart
             .Where(pc => pc.CartID == cart.Id)
             .Select(pc => pc.Product)

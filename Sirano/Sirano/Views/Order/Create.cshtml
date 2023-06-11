@@ -46,7 +46,7 @@
         <p style="font-family: IBM Plex Sans; font-size: 20px; font-weight: 100; color: rgba(20, 20, 20, 1.2); margin-top: 10px">ENTER YOUR CARD DETAILS</p>
     </div>
     <div class="credit-card-details-container">
-        <form onsubmit="handleCreditCardDetailsSubmit(event)">
+        <form action="/Order/OrderWithCreditCard" method="post" id="creditCardForm" onsubmit="handleCreditCardDetailsSubmit(event)">
             <div style="margin-top:70px; color: rgba(20, 20, 20, 0.6);">
                 <input type="text" id="credit-card-number" placeholder="Card Number" required style="width: 45%; display: inline-block; border-width: 0px 0px 1px 0px">
                 <input type="text" id="expiration-month" placeholder="Expiration Month (MM)" required style="width: 20%; display: inline-block;  margin-left: 60px; border-width: 0px 0px 1px 0px">
@@ -55,15 +55,18 @@
             <div style="margin-top:40px; color: rgba(20, 20, 20, 0.6);">
                 <input type="text" id="card-holder" placeholder="Card Holder" required style="width: 45%; display: inline-block; border-width: 0px 0px 1px 0px">
                 <input type="text" id="cvv2" placeholder="CVV2 Security Code" required style="width: 44%; display: inline-block;  margin-left: 60px;border-width: 0px 0px 1px 0px">
+                <input type="hidden" id="hidden-credit-card-number" name="creditCardNumber">
+                <input type="hidden" id="hidden-expiration-month" name="expirationMonth">
+                <input type="hidden" id="hidden-expiration-year" name="expirationYear">
+                <input type="hidden" id="hidden-card-holder" name="cardHolder">
+                <input type="hidden" id="hidden-cvv2" name="cvv2">
             </div>
             <div style="margin-top:200px; margin-left:840px; margin-right:60px">
-                <form action="/Product/Create">
-                    <button type="submit" class="button5">CONTINUE</button>
-                </form>
+                <button type="submit" class="button5">FINISH ORDER</button>
             </div>
         </form>
-
     </div>
+
 
     <script>
 
@@ -84,6 +87,15 @@
             successMessage.style.marginTop = '20px';
             successMessage.style.textAlign = 'center';
             document.body.appendChild(successMessage);
+            // Set hidden form values
+            document.getElementById('hidden-credit-card-number').value = creditCardNumber;
+            document.getElementById('hidden-expiration-month').value = expirationMonth;
+            document.getElementById('hidden-expiration-year').value = expirationYear;
+            document.getElementById('hidden-card-holder').value = cardHolder;
+            document.getElementById('hidden-cvv2').value = cvv2;
+
+            // Now submit the form
+            document.getElementById('creditCardForm').submit();
         }
     </script>
 </body>

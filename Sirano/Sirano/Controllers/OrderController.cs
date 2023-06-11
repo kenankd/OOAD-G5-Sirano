@@ -20,10 +20,10 @@ namespace Sirano.Controllers
         }
 
         // GET: Order
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var applicationDbContext = _context.Order.Include(o => o.Cart);
-            return View(await applicationDbContext.ToListAsync());
+
+            return View();
         }
 
         // GET: Order/Details/5
@@ -45,13 +45,68 @@ namespace Sirano.Controllers
             return View(order);
         }
 
+        [HttpPost]
         // GET: Order/Create
-        public IActionResult Create()
+        public async Task<IActionResult> OrderOrFillPayDetails(string paymentMethod)
         {
-            ViewData["CartID"] = new SelectList(_context.Cart, "Id", "Id");
-            return View();
-        }
+            if (paymentMethod == "cash-on-delivery")
+            {
+                var user = await _context.RegisteredUser.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+                var cart = await _context.Cart.FirstOrDefaultAsync(c => c.UserID == user.Id && c.Bought == false);
+                var newOrder = new Order
+                {
+                    OrderDate = DateTime.Today.ToString("MM/dd/yyyy"),
+                    DeliveryDate = DateTime.Today.AddDays(7).ToString("MM/dd/yyyy"),
+                    Status = "Ordered Succesfully!",
+                    PaymentMethod = (PaymentMethod)3,
+                    CartID = cart.Id,
+                    CardNumber = null,
+                    ExpirationMonth = 0, //treba migrirat da moze biti null
+                    ExpirationYear = 0,   //treba migrirat da moze biti null
+                    Cardholder = null,
+                    CVV = 0 //treba migrirat da moze biti null
+                };
+                await _context.Order.AddAsync(newOrder);
+                int changes = await _context.SaveChangesAsync();
+                if (changes == 1)
+                {
+                    cart.Bought = true;
+                    _context.Cart.Update(cart);
+                    await _context.SaveChangesAsync();
+                }
+                return View("~/Views/Home/Privacy.cshtml");
+            }
 
+            return View("Create");
+        }
+        [HttpPost]
+        public async Task<IActionResult> OrderWithCreditCard(string creditCardNumber, int expirationMonth, int expirationYear, string cardHolder, int cvv2)
+        {
+            var user = await _context.RegisteredUser.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+            var cart = await _context.Cart.FirstOrDefaultAsync(c => c.UserID == user.Id && c.Bought == false);
+            var newOrder = new Order
+            {
+                OrderDate = DateTime.Today.ToString("MM/dd/yyyy"),
+                DeliveryDate = DateTime.Today.AddDays(7).ToString("MM/dd/yyyy"),
+                Status = "Ordered Succesfully!",
+                PaymentMethod = PaymentMethod.Card,
+                CartID = cart.Id,
+                CardNumber = creditCardNumber,
+                ExpirationMonth = expirationMonth,
+                ExpirationYear = expirationYear,
+                Cardholder = cardHolder,
+                CVV = cvv2
+            };
+            await _context.Order.AddAsync(newOrder);
+            int changes = await _context.SaveChangesAsync();
+            if (changes == 1)
+            {
+                cart.Bought = true;
+                _context.Cart.Update(cart);
+                await _context.SaveChangesAsync();
+            }
+            return View("~/Views/Home/Privacy.cshtml");
+        }
         // POST: Order/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
