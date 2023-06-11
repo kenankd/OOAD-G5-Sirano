@@ -41,8 +41,12 @@
     <div class="container">
             @foreach (var product in Model)
             {
-                <div class="product-card">
-                <img src="@product.Image" alt="Product Image" class="product-image" style="margin-left:100px">
-                </div>
+                string actionLink = Url.Action("Index", "Review", new { id = product.Id });
+
+                <a href="@actionLink">
+                    <div class="product-card">
+                        <img src="@Url.Content(product.Image)" alt="@product.Name" class="product-image" style="margin-left:100px">
+                    </div>
+                </a>
             }
     </div>
