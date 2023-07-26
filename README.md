@@ -3,7 +3,7 @@
 
 Welcome to Sirano – the ultimate destination for fashion lovers! Our app offers the latest trends in clothing, 
 so you can always stay on top of the fashion game. Whether you're looking for casual wear, formal attire, 
-or something in between, Sirano has got you covered. 
+or something in between, Sirano has got you covered. Web app can be accessed through the following link: http://siranoo-001-site1.etempurl.com/
 
 
 <h3 align="left">About</h3>
